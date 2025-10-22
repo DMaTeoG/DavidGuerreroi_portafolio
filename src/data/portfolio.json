@@ -1,0 +1,85 @@
+﻿{
+  "navbar": {
+    "name": "Mateo Guerrero",
+    "links": [
+      {"label": "Inicio", "href": "#inicio"},
+      {"label": "Sobre mi", "href": "#sobre"},
+      {"label": "Tecnologias", "href": "#tecnologias"},
+      {"label": "Proyectos", "href": "#proyectos"},
+      {"label": "Experiencia", "href": "#experiencia"},
+      {"label": "Contacto", "href": "#contacto"}
+    ]
+  },
+  "hero": {
+    "title": "Hola, soy Mateo Guerrero",
+    "description": "Desarrollador de software apasionado por crear soluciones innovadoras y experiencias digitales excepcionales.",
+    "primaryCta": {
+      "label": "Contactame",
+      "href": "#contacto"
+    },
+    "secondaryCta": {
+      "label": "Ver CV",
+      "href": "/cv.pdf",
+      "targetBlank": true
+    }
+  },
+  "about": {
+    "title": "Sobre mi",
+    "description": "Disfruto trabajar en equipo, ya que creo que la colaboracion es clave para lograr grandes resultados. Ademas, me apasiona el gimnasio y valoro la disciplina, tanto en mi vida personal como en mi crecimiento profesional. Mi pasion por la tecnologia me motiva a mantenerme actualizado con las ultimas tendencias y a involucrarme en proyectos que generen un impacto positivo."
+  },
+  "technologies": {
+    "title": "Tecnologias",
+    "items": ["HTML", "CSS", "JavaScript", "React", "Node.js", "Python", "Django"]
+  },
+  "projects": {
+    "title": "Proyectos",
+    "items": [
+      {
+        "title": "E-commerce Platform",
+        "description": "Plataforma completa de comercio electronico con React y Node.js."
+      },
+      {
+        "title": "Task Manager",
+        "description": "Aplicacion de gestion de tareas con funcionalidades avanzadas."
+      },
+      {
+        "title": "Weather App",
+        "description": "Aplicacion del clima con datos en tiempo real y diseno intuitivo."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Experiencia",
+    "items": [
+      {
+        "role": "Frontend Developer",
+        "description": "Desarrollo de interfaces modernas y responsivas utilizando React."
+      },
+      {
+        "role": "Full Stack Developer",
+        "description": "Desarrollo completo de aplicaciones web, con enfoque en la experiencia del usuario."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contacto",
+    "fields": [
+      {
+        "name": "nombre",
+        "type": "text",
+        "placeholder": "Nombre"
+      },
+      {
+        "name": "correo",
+        "type": "email",
+        "placeholder": "Correo"
+      },
+      {
+        "name": "mensaje",
+        "type": "textarea",
+        "placeholder": "Mensaje"
+      }
+    ],
+    "buttonLabel": "Enviar Mensaje"
+  }
+}

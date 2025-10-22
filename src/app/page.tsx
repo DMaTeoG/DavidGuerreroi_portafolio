@@ -1,103 +1,137 @@
-import Image from "next/image";
+// app/page.tsx
+"use client";
+import { useState } from "react";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [form, setForm] = useState({ nombre: "", correo: "", mensaje: "" });
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Formulario enviado:", form);
+  };
+
+  return (
+    <main className={`${poppins.className} font-sans scroll-smooth text-gray-700`}>
+      {/* Navbar */}
+      <nav className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+        <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+          <h1 className="text-xl font-bold text-gray-900">Mateo Guerrero</h1>
+          <ul className="flex space-x-6 text-sm font-medium">
+            <li><a href="#inicio" className="hover:text-blue-600">Inicio</a></li>
+            <li><a href="#sobre" className="hover:text-blue-600">Sobre mí</a></li>
+            <li><a href="#tecnologias" className="hover:text-blue-600">Tecnologías</a></li>
+            <li><a href="#proyectos" className="hover:text-blue-600">Proyectos</a></li>
+            <li><a href="#experiencia" className="hover:text-blue-600">Experiencia</a></li>
+            <li><a href="#contacto" className="hover:text-blue-600">Contacto</a></li>
+          </ul>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </nav>
+
+      {/* Hero */}
+      <section id="inicio" className="h-screen flex flex-col justify-center items-center text-center bg-gray-50 px-4">
+        <h2 className="text-5xl font-bold mb-6 text-gray-900">Hola, soy Mateo 👋</h2>
+        <p className="text-lg mb-8 max-w-2xl leading-relaxed">
+          Desarrollador de software apasionado por crear soluciones innovadoras y experiencias digitales excepcionales.
+        </p>
+        <div className="space-x-4">
+          <a href="#contacto" className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700">Contáctame</a>
+          <a href="/cv.pdf" target="_blank" className="px-6 py-3 border border-blue-600 text-blue-600 rounded-xl hover:bg-blue-50">Ver CV</a>
+        </div>
+      </section>
+
+      {/* Sobre mí */}
+      <section id="sobre" className="max-w-4xl mx-auto py-24 px-6">
+        <h2 className="text-3xl font-bold mb-6 text-center text-gray-900">Sobre mí</h2>
+        <p className="text-lg text-center leading-relaxed">
+          Disfruto trabajar en equipo, ya que creo que la colaboración es clave para lograr grandes resultados. 
+          Además, me apasiona el gimnasio y valoro la disciplina, tanto en mi vida personal como en mi crecimiento profesional. 
+          Mi pasión por la tecnología me motiva a mantenerme actualizado con las últimas tendencias y a involucrarme en proyectos que generen un impacto positivo.
+        </p>
+      </section>
+
+      {/* Tecnologías */}
+      <section id="tecnologias" className="bg-white py-24">
+        <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Tecnologías</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center">
+          {["HTML", "CSS", "JavaScript", "React", "Node.js", "Python", "Django"].map((tech) => (
+            <div key={tech} className="p-6 border rounded-xl shadow-sm bg-gray-50 hover:shadow-md">
+              <span className="font-semibold">{tech}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Proyectos */}
+      <section id="proyectos" className="max-w-6xl mx-auto py-24 px-6">
+        <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Proyectos</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            { title: "E-commerce Platform", desc: "Plataforma completa de comercio electrónico con React y Node.js" },
+            { title: "Task Manager", desc: "Aplicación de gestión de tareas con funcionalidades avanzadas" },
+            { title: "Weather App", desc: "Aplicación del clima con datos en tiempo real y diseño intuitivo" },
+          ].map((proj) => (
+            <div key={proj.title} className="p-6 border rounded-xl shadow bg-white hover:shadow-lg">
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">{proj.title}</h3>
+              <p className="text-gray-600 leading-relaxed">{proj.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Experiencia */}
+      <section id="experiencia" className="bg-gray-50 py-24 px-6">
+        <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Experiencia</h2>
+        <div className="space-y-8 max-w-3xl mx-auto">
+          <div className="p-6 border-l-4 border-blue-600 bg-white shadow-sm rounded">
+            <h3 className="text-xl font-semibold text-gray-900">Frontend Developer</h3>
+            <p className="text-gray-600 leading-relaxed">Desarrollo de interfaces modernas y responsivas utilizando React.</p>
+          </div>
+          <div className="p-6 border-l-4 border-blue-600 bg-white shadow-sm rounded">
+            <h3 className="text-xl font-semibold text-gray-900">Full Stack Developer</h3>
+            <p className="text-gray-600 leading-relaxed">Desarrollo completo de aplicaciones web, con enfoque en la experiencia del usuario.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contacto */}
+      <section id="contacto" className="py-24 px-6 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Contacto</h2>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <input
+            type="text"
+            name="nombre"
+            placeholder="Nombre"
+            value={form.nombre}
+            onChange={handleChange}
+            className="w-full p-4 border rounded-xl focus:ring-2 focus:ring-blue-600"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <input
+            type="email"
+            name="correo"
+            placeholder="Correo"
+            value={form.correo}
+            onChange={handleChange}
+            className="w-full p-4 border rounded-xl focus:ring-2 focus:ring-blue-600"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+          <textarea
+            name="mensaje"
+            placeholder="Mensaje"
+            value={form.mensaje}
+            onChange={handleChange}
+            className="w-full p-4 border rounded-xl h-40 focus:ring-2 focus:ring-blue-600"
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <button type="submit" className="w-full p-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
+            Enviar Mensaje
+          </button>
+        </form>
+      </section>
+    </main>
   );
 }
