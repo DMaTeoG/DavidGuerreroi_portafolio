@@ -1,13 +1,13 @@
-﻿{
+{
   "navbar": {
     "name": "Mateo Guerrero",
     "links": [
-      {"label": "Inicio", "href": "#inicio"},
-      {"label": "Sobre mi", "href": "#sobre"},
-      {"label": "Tecnologias", "href": "#tecnologias"},
-      {"label": "Proyectos", "href": "#proyectos"},
-      {"label": "Experiencia", "href": "#experiencia"},
-      {"label": "Contacto", "href": "#contacto"}
+      { "label": "Inicio", "href": "#inicio" },
+      { "label": "Sobre mi", "href": "#sobre" },
+      { "label": "Tecnologias", "href": "#tecnologias" },
+      { "label": "Proyectos", "href": "#proyectos" },
+      { "label": "Experiencia", "href": "#experiencia" },
+      { "label": "Contacto", "href": "#contacto" }
     ]
   },
   "hero": {
@@ -83,3 +83,4 @@
     "buttonLabel": "Enviar Mensaje"
   }
 }
+\ No newline at end of file
