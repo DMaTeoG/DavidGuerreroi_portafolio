@@ -16,7 +16,7 @@ import ContactSection from "@/components/ContactSection";
 import { PortfolioData } from "@/types/portfolio";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
-const data = rawData as PortfolioData;
+const data = rawData as unknown as PortfolioData;
 const initialFormState = data.contact.fields.reduce<Record<string, string>>((acc, field) => {
   acc[field.name] = "";
   return acc;
@@ -35,7 +35,7 @@ export default function Home() {
   };
 
   return (
-    <main className={`${poppins.className} font-sans scroll-smooth text-gray-700`}>
+    <main className={`${poppins.className} font-sans scroll-smooth text-gray-800`}>
       <Navbar data={data.navbar} />
       <HeroSection data={data.hero} />
       <AboutSection data={data.about} />
