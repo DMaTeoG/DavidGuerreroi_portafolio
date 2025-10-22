@@ -13,6 +13,10 @@
   "hero": {
     "title": "Hola, soy Mateo Guerrero",
     "description": "Desarrollador de software apasionado por crear soluciones innovadoras y experiencias digitales excepcionales.",
+    "image": {
+      "src": "/hero-photo.png",
+      "alt": "Retrato de Mateo Guerrero"
+    },
     "primaryCta": {
       "label": "Contactame",
       "href": "#contacto"
@@ -25,7 +29,11 @@
   },
   "about": {
     "title": "Sobre mi",
-    "description": "Disfruto trabajar en equipo, ya que creo que la colaboracion es clave para lograr grandes resultados. Ademas, me apasiona el gimnasio y valoro la disciplina, tanto en mi vida personal como en mi crecimiento profesional. Mi pasion por la tecnologia me motiva a mantenerme actualizado con las ultimas tendencias y a involucrarme en proyectos que generen un impacto positivo."
+    "description": "Disfruto trabajar en equipo, ya que creo que la colaboracion es clave para lograr grandes resultados. Ademas, me apasiona el gimnasio y valoro la disciplina, tanto en mi vida personal como en mi crecimiento profesional. Mi pasion por la tecnologia me motiva a mantenerme actualizado con las ultimas tendencias y a involucrarme en proyectos que generen un impacto positivo.",
+    "image": {
+      "src": "/about-photo.png",
+      "alt": "Mateo Guerrero sonriendo"
+    }
   },
   "technologies": {
     "title": "Tecnologias",
@@ -83,4 +91,4 @@
     "buttonLabel": "Enviar Mensaje"
   }
 }
-\ No newline at end of file
+

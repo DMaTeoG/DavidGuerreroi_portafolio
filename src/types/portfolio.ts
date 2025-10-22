@@ -14,9 +14,15 @@ export interface HeroButton {
   targetBlank?: boolean;
 }
 
+export interface ImageData {
+  src: string;
+  alt: string;
+}
+
 export interface HeroData {
   title: string;
   description: string;
+  image?: ImageData;
   primaryCta: HeroButton;
   secondaryCta?: HeroButton;
 }
@@ -24,6 +30,7 @@ export interface HeroData {
 export interface AboutData {
   title: string;
   description: string;
+  image?: ImageData;
 }
 
 export interface TechnologiesData {
