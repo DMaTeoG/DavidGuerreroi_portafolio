@@ -2,7 +2,7 @@
 "use client";
 
 import type { FormEvent } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Poppins } from "next/font/google";
 
 import rawData from "@/data/portfolio.json";
@@ -26,6 +26,35 @@ const initialFormState = data.contact.fields.reduce<Record<string, string>>((acc
 
 export default function Home() {
   const [form, setForm] = useState<Record<string, string>>(initialFormState);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const storedTheme = window.localStorage.getItem("theme-preference");
+    if (storedTheme === "dark" || storedTheme === "light") {
+      setIsDarkMode(storedTheme === "dark");
+      return;
+    }
+
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setIsDarkMode(prefersDark);
+  }, []);
+
+  useEffect(() => {
+    if (typeof document === "undefined") {
+      return;
+    }
+
+    document.documentElement.classList.toggle("dark", isDarkMode);
+    document.documentElement.setAttribute("data-theme", isDarkMode ? "dark" : "light");
+
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("theme-preference", isDarkMode ? "dark" : "light");
+    }
+  }, [isDarkMode]);
 
   const handleFieldChange = (name: string, value: string) => {
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -37,8 +66,10 @@ export default function Home() {
   };
 
   return (
-    <main className={`${poppins.className} font-sans scroll-smooth text-gray-800`}>
-      <Navbar data={data.navbar} />
+    <main
+      className={`${poppins.className} font-sans scroll-smooth text-gray-800 transition-colors dark:bg-neutral-950 dark:text-neutral-100`}
+    >
+      <Navbar data={data.navbar} isDarkMode={isDarkMode} onToggleTheme={() => setIsDarkMode((prev) => !prev)} />
       <HeroSection data={data.hero} />
       <AboutSection data={data.about} />
       <TechnologiesSection data={data.technologies} />
