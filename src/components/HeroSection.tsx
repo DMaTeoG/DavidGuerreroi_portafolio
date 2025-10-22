@@ -7,7 +7,7 @@ type HeroSectionProps = {
 };
 
 const HeroSection = ({ data }: HeroSectionProps) => (
-  <section id="inicio" className="bg-red-600 px-6 py-32 text-white">
+  <section id="inicio" className="bg-gradient-to-br from-red-700 via-red-600 to-red-500 px-6 py-32 text-white">
     <div className="mx-auto flex max-w-6xl flex-col-reverse items-center gap-12 text-center md:flex-row md:text-left">
       <div className="space-y-6 md:flex-1">
         <h2 className="text-5xl font-bold md:text-6xl">{data.title}</h2>
@@ -29,6 +29,34 @@ const HeroSection = ({ data }: HeroSectionProps) => (
               {data.secondaryCta.label}
             </a>
           ) : null}
+          <div className="flex items-center gap-3 rounded-xl border border-white/40 bg-white/10 px-4 py-3 text-sm font-medium text-white shadow backdrop-blur">
+            <a
+              href={data.social?.facebook ?? "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-red-200"
+            >
+              Facebook
+            </a>
+            <span className="text-white/40">|</span>
+            <a
+              href={data.social?.linkedin ?? "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-red-200"
+            >
+              LinkedIn
+            </a>
+            <span className="text-white/40">|</span>
+            <a
+              href={data.social?.instagram ?? "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-red-200"
+            >
+              Instagram
+            </a>
+          </div>
         </div>
       </div>
       <div className="md:flex-1 md:flex md:justify-end">

@@ -7,11 +7,11 @@ type AboutSectionProps = {
 };
 
 const AboutSection = ({ data }: AboutSectionProps) => (
-  <section id="sobre" className="bg-white py-24 px-6">
+  <section id="sobre" className="bg-gradient-to-br from-red-50 via-white to-red-100 py-24 px-6">
     <div className="mx-auto grid max-w-5xl gap-12 text-gray-800 md:grid-cols-[3fr_2fr] md:items-center">
       <div className="space-y-6 text-center md:text-left">
         <h2 className="text-3xl font-bold text-red-600 md:text-4xl">{data.title}</h2>
-        <p className="text-lg leading-relaxed">{data.description}</p>
+        <p className="text-lg leading-relaxed text-gray-700">{data.description}</p>
       </div>
       <div className="flex justify-center md:justify-end">
         {data.image ? (

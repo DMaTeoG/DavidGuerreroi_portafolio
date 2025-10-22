@@ -25,6 +25,11 @@
       "label": "Ver CV",
       "href": "/cv.pdf",
       "targetBlank": true
+    },
+    "social": {
+      "facebook": "https://www.facebook.com/mateo.guerrero",
+      "linkedin": "https://www.linkedin.com/in/mateoguerrero",
+      "instagram": "https://www.instagram.com/mateo.guerrero"
     }
   },
   "about": {
@@ -69,6 +74,81 @@
       }
     ]
   },
+  "experienceHighlights": {
+    "title": "Experiencias Destacadas",
+    "items": [
+      {
+        "role": "Frontend Developer",
+        "company": "TechVision",
+        "period": "2023 - Presente",
+        "description": "Lidere el desarrollo de interfaces responsivas para productos SaaS orientados a data analytics.",
+        "achievements": [
+          "Implementacion de diseno atomico que redujo el tiempo de iteracion en un 30%",
+          "Migracion de componentes criticos a Next.js con soporte completo para accesibilidad"
+        ]
+      },
+      {
+        "role": "Full Stack Developer",
+        "company": "Innova Labs",
+        "period": "2021 - 2023",
+        "description": "Construi y mantuve aplicaciones web end-to-end enfocadas en experiencias personalizadas de usuario.",
+        "achievements": [
+          "Disene pipelines CI/CD que redujeron tiempos de despliegue a menos de 10 minutos",
+          "Integre dashboards analiticos en tiempo real que mejoraron la toma de decisiones del negocio"
+        ]
+      }
+    ]
+  },
+  "references": {
+    "title": "Referencias",
+    "subtitle": "Lo que dicen las personas que han colaborado conmigo.",
+    "items": [
+      {
+        "name": "Maria Gonzalez",
+        "role": "Companera de Universidad",
+        "relation": "Project Lead en colaboracion academica",
+        "quote": "Excelente companero de equipo, muy dedicado y siempre dispuesto a ayudar. Su pasion por el desarrollo web es admirable.",
+        "rating": 5,
+        "contact": [
+          { "type": "email", "label": "Email", "href": "mailto:maria.gonzalez@example.com" },
+          { "type": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com" }
+        ]
+      },
+      {
+        "name": "Carlos Rodriguez",
+        "role": "Mentor de Proyecto",
+        "relation": "Mentor en programa de incubacion",
+        "quote": "Demuestra gran potencial en el desarrollo frontend. Su capacidad de adaptacion y aprendizaje es excepcional.",
+        "rating": 5,
+        "contact": [
+          { "type": "email", "label": "Email", "href": "mailto:carlos.rodriguez@example.com" },
+          { "type": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com" }
+        ]
+      },
+      {
+        "name": "Ana Martinez",
+        "role": "Colaboradora en Proyecto",
+        "relation": "Partner en startup de tecnologia",
+        "quote": "Trabajar con Mateo fue una experiencia muy positiva. Su creatividad y habilidades tecnicas son impresionantes.",
+        "rating": 5,
+        "contact": [
+          { "type": "email", "label": "Email", "href": "mailto:ana.martinez@example.com" },
+          { "type": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com" }
+        ]
+      },
+      {
+        "name": "Dr. Luis Perez",
+        "role": "Profesor de Programacion",
+        "relation": "Docente en la universidad",
+        "quote": "Estudiante destacado con gran potencial. Su dedicacion y curiosidad por aprender nuevas tecnologias es notable.",
+        "rating": 5,
+        "contact": [
+          { "type": "email", "label": "Email", "href": "mailto:luis.perez@example.com" },
+          { "type": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com" }
+        ]
+      }
+    ]
+  },
   "contact": {
     "title": "Contacto",
     "fields": [
@@ -91,4 +171,3 @@
     "buttonLabel": "Enviar Mensaje"
   }
 }
-

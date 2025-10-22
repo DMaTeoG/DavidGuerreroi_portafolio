@@ -25,6 +25,11 @@ export interface HeroData {
   image?: ImageData;
   primaryCta: HeroButton;
   secondaryCta?: HeroButton;
+  social?: {
+    facebook?: string;
+    linkedin?: string;
+    instagram?: string;
+  };
 }
 
 export interface AboutData {
@@ -58,6 +63,43 @@ export interface ExperienceData {
   items: ExperienceItem[];
 }
 
+export interface ExperienceHighlightItem {
+  role: string;
+  company: string;
+  period: string;
+  description: string;
+  achievements: string[];
+}
+
+export interface ExperienceHighlightsData {
+  title: string;
+  items: ExperienceHighlightItem[];
+}
+
+export type ReferenceContactType = "email" | "linkedin" | "website";
+
+export interface ReferenceContact {
+  type: ReferenceContactType;
+  label: string;
+  href: string;
+}
+
+export interface ReferenceItem {
+  name: string;
+  role: string;
+  relation: string;
+  quote: string;
+  rating: number;
+  avatar?: ImageData;
+  contact: ReferenceContact[];
+}
+
+export interface ReferencesData {
+  title: string;
+  subtitle: string;
+  items: ReferenceItem[];
+}
+
 export interface ContactField {
   name: string;
   type: "text" | "email" | "textarea";
@@ -77,5 +119,7 @@ export interface PortfolioData {
   technologies: TechnologiesData;
   projects: ProjectsData;
   experience: ExperienceData;
+  experienceHighlights: ExperienceHighlightsData;
+  references: ReferencesData;
   contact: ContactData;
 }
