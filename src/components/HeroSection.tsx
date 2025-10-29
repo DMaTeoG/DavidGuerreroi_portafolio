@@ -1,12 +1,12 @@
+import type { ReactElement } from "react";
 import Image from "next/image";
-
 import { HeroData, HeroSocialKey } from "@/types/portfolio";
 
 type HeroSectionProps = {
   data: HeroData;
 };
 
-const iconMap: Record<HeroSocialKey, JSX.Element> = {
+const iconMap: Record<HeroSocialKey, ReactElement> = {
   github: (
     <svg aria-hidden className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
       <path
