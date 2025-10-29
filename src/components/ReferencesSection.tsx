@@ -73,7 +73,15 @@ const ReferencesSection = ({ data }: ReferencesSectionProps) => {
                   <p className="text-xs text-gray-500 dark:text-neutral-400">{item.relation}</p>
                 </div>
               </div>
-              <p className="mt-6 text-base leading-relaxed text-gray-600 dark:text-neutral-300">"{item.quote}"</p>
+              <p className="mt-6 text-base leading-relaxed text-gray-600 dark:text-neutral-300">
+                <span aria-hidden className="me-1 text-lg font-semibold text-rose-400 dark:text-rose-300">
+                  &ldquo;
+                </span>
+                {item.quote}
+                <span aria-hidden className="ms-1 text-lg font-semibold text-rose-400 dark:text-rose-300">
+                  &rdquo;
+                </span>
+              </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 {item.contact.map((contact) => (
                   <a
