@@ -39,37 +39,62 @@ export default function Home() {
 
   const data = dataset.content[locale];
 
+  const setThemeAttributes = (mode: "dark" | "light", options: { persist?: boolean } = {}) => {
+    if (typeof document !== "undefined") {
+      const root = document.documentElement;
+      const body = document.body;
+
+      root.classList.toggle("dark", mode === "dark");
+      root.setAttribute("data-theme", mode);
+      root.style.setProperty("color-scheme", mode);
+
+      body.setAttribute("data-theme", mode);
+      body.classList.toggle("dark-mode", mode === "dark");
+      body.classList.toggle("light-mode", mode === "light");
+      body.style.setProperty("color-scheme", mode);
+    }
+
+    if (options.persist !== false && typeof window !== "undefined") {
+      window.localStorage.setItem(THEME_STORAGE_KEY, mode);
+    }
+  };
+
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
     }
 
     const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-    if (storedTheme === "dark" || storedTheme === "light") {
-      setIsDarkMode(storedTheme === "dark");
-    } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setIsDarkMode(prefersDark);
-    }
+    const initialTheme: "dark" | "light" =
+      storedTheme === "dark" || storedTheme === "light"
+        ? storedTheme
+        : window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+
+    setThemeAttributes(initialTheme, { persist: Boolean(storedTheme) });
+    setIsDarkMode(initialTheme === "dark");
 
     const storedLocale = window.localStorage.getItem(LOCALE_STORAGE_KEY) as PortfolioLocale | null;
     if (storedLocale && dataset.locales.includes(storedLocale)) {
       setLocale(storedLocale);
     }
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleMediaChange = (event: MediaQueryListEvent) => {
+      const manualPreference = window.localStorage.getItem(THEME_STORAGE_KEY);
+      if (manualPreference === "dark" || manualPreference === "light") {
+        return;
+      }
+
+      const systemTheme = event.matches ? "dark" : "light";
+      setThemeAttributes(systemTheme, { persist: false });
+      setIsDarkMode(systemTheme === "dark");
+    };
+
+    mediaQuery.addEventListener("change", handleMediaChange);
+    return () => mediaQuery.removeEventListener("change", handleMediaChange);
   }, []);
-
-  useEffect(() => {
-    if (typeof document === "undefined") {
-      return;
-    }
-
-    document.documentElement.classList.toggle("dark", isDarkMode);
-    document.documentElement.setAttribute("data-theme", isDarkMode ? "dark" : "light");
-
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(THEME_STORAGE_KEY, isDarkMode ? "dark" : "light");
-    }
-  }, [isDarkMode]);
 
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -94,6 +119,14 @@ export default function Home() {
     console.log(`${logLabel}:`, form);
   };
 
+  const handleToggleTheme = () => {
+    setIsDarkMode((prev) => {
+      const next = !prev;
+      setThemeAttributes(next ? "dark" : "light");
+      return next;
+    });
+  };
+
   const handleChangeLocale = (nextLocale: PortfolioLocale) => {
     if (nextLocale === locale) {
       return;
@@ -113,7 +146,7 @@ export default function Home() {
       <Navbar
         data={data.navbar}
         isDarkMode={isDarkMode}
-        onToggleTheme={() => setIsDarkMode((prev) => !prev)}
+        onToggleTheme={handleToggleTheme}
         availableLocales={dataset.locales}
         currentLocale={locale}
         onChangeLocale={handleChangeLocale}
