@@ -108,7 +108,7 @@ export default function Home() {
 
   return (
     <main
-      className={`${poppins.className} font-sans scroll-smooth text-gray-800 transition-colors dark:bg-neutral-950 dark:text-neutral-100`}
+      className={`${poppins.className} font-sans scroll-smooth text-gray-800 transition-colors duration-500 ease-out dark:bg-black dark:text-white`}
     >
       <Navbar
         data={data.navbar}

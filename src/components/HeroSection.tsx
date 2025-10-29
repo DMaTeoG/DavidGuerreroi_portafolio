@@ -48,12 +48,12 @@ const HeroSection = ({ data }: HeroSectionProps) => {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden bg-gradient-to-br from-rose-50 via-white to-rose-100 px-6 py-32 text-gray-900 transition-colors dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950"
+      className="relative overflow-hidden bg-gradient-to-br from-rose-50 via-white to-rose-100 px-6 py-32 text-gray-900 transition-colors duration-500 ease-out dark:from-black dark:via-neutral-950 dark:to-rose-950"
     >
-      <div className="pointer-events-none absolute -left-32 top-16 h-80 w-80 rounded-full bg-rose-200/50 blur-3xl dark:hidden" aria-hidden />
-      <div className="pointer-events-none absolute -right-24 -bottom-12 h-72 w-72 rounded-full bg-rose-300/40 blur-3xl dark:hidden" aria-hidden />
+      <div className="pointer-events-none absolute -left-32 top-16 h-80 w-80 rounded-full bg-rose-200/50 blur-3xl dark:bg-rose-900/40" aria-hidden />
+      <div className="pointer-events-none absolute -right-24 -bottom-12 h-72 w-72 rounded-full bg-rose-300/40 blur-3xl dark:bg-rose-900/30" aria-hidden />
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-12 text-center md:flex-row md:items-start md:text-left">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-12 text-center text-gray-900 transition-colors duration-500 ease-out md:flex-row md:items-start md:text-left dark:text-white">
         <div className="md:flex-1 md:pt-8">
           <h2 className="text-4xl font-bold leading-tight md:text-5xl">
             {highlightParts ? (
@@ -66,13 +66,13 @@ const HeroSection = ({ data }: HeroSectionProps) => {
               data.title
             )}
           </h2>
-          <p className="mt-6 text-base leading-relaxed text-gray-600 md:max-w-xl md:text-lg dark:text-neutral-300">
+          <p className="mt-6 text-base leading-relaxed text-gray-600 md:max-w-xl md:text-lg dark:text-neutral-200">
             {data.description}
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4 md:justify-start">
             <a
               href={data.primaryCta.href}
-              className="rounded-full bg-rose-500 px-6 py-3 text-sm font-semibold text-white shadow transition-transform hover:-translate-y-0.5 hover:bg-rose-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
+              className="rounded-full bg-rose-500 px-6 py-3 text-sm font-semibold text-white shadow transition-transform transition-colors duration-500 hover:-translate-y-0.5 hover:bg-rose-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 dark:bg-rose-600 dark:hover:bg-rose-500"
             >
               {data.primaryCta.label}
             </a>
@@ -81,7 +81,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
                 href={data.secondaryCta.href}
                 target={data.secondaryCta.targetBlank ? "_blank" : undefined}
                 rel={data.secondaryCta.targetBlank ? "noopener noreferrer" : undefined}
-                className="rounded-full border border-rose-200 bg-white px-6 py-3 text-sm font-semibold text-rose-500 shadow-sm transition-transform hover:-translate-y-0.5 hover:border-rose-400 hover:text-rose-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-200 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:border-neutral-500 dark:hover:text-neutral-50"
+                className="rounded-full border border-rose-200 bg-white px-6 py-3 text-sm font-semibold text-rose-500 shadow-sm transition-transform transition-colors duration-500 hover:-translate-y-0.5 hover:border-rose-400 hover:text-rose-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-200 dark:border-rose-700 dark:bg-black/60 dark:text-white dark:hover:border-rose-500 dark:hover:text-rose-300"
               >
                 {data.secondaryCta.label}
               </a>
@@ -95,7 +95,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 text-gray-900 transition-colors hover:border-rose-400 hover:text-rose-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-300 dark:border-neutral-700 dark:text-neutral-100 dark:hover:border-neutral-500 dark:hover:text-neutral-50"
+                  className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 text-gray-900 transition-colors duration-500 hover:border-rose-400 hover:text-rose-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-300 dark:border-rose-700 dark:text-white dark:hover:border-rose-500 dark:hover:text-rose-300"
                 >
                   <span className="sr-only">{key}</span>
                   {iconMap[key]}
@@ -107,14 +107,14 @@ const HeroSection = ({ data }: HeroSectionProps) => {
         <div className="md:flex md:flex-1 md:justify-end">
           {data.image ? (
             <div className="relative flex justify-center md:justify-end">
-              <span className="absolute inset-0 rounded-full bg-rose-200/50 blur-2xl dark:hidden" aria-hidden />
+              <span className="absolute inset-0 rounded-full bg-rose-200/50 blur-2xl dark:bg-rose-900/30" aria-hidden />
               <Image
                 src={data.image.src}
                 alt={data.image.alt}
                 width={320}
                 height={320}
                 priority
-                className="relative h-56 w-56 rounded-full border-4 border-white object-cover shadow-xl md:h-64 md:w-64 dark:border-neutral-800"
+                className="relative h-56 w-56 rounded-full border-4 border-white object-cover shadow-xl md:h-64 md:w-64 dark:border-rose-900/60"
               />
             </div>
           ) : (

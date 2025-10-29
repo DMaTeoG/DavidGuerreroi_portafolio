@@ -54,8 +54,8 @@ const Navbar = ({
   const languageLegend = currentLocale === "es" ? "Idioma" : "Language";
 
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full border-b border-rose-100/70 bg-white/80 backdrop-blur shadow-sm transition-colors dark:border-neutral-800 dark:bg-neutral-950/80">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 text-gray-900 transition-colors dark:text-neutral-100">
+    <nav className="fixed top-0 left-0 z-50 w-full border-b border-rose-100/70 bg-white/80 backdrop-blur shadow-sm transition-colors duration-500 ease-out dark:border-rose-900/60 dark:bg-black/80">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 text-gray-900 transition-colors duration-500 dark:text-white">
         <h1 className="text-xl font-semibold tracking-tight text-gray-900 transition-colors dark:text-neutral-100">
           {data.name}
         </h1>
@@ -144,7 +144,7 @@ const Navbar = ({
       </div>
       <div
         id="mobile-menu"
-        className={`md:hidden overflow-hidden border-t border-rose-100/70 bg-white/95 shadow-sm transition-[max-height,opacity] duration-300 dark:border-neutral-800 dark:bg-neutral-950/95 ${
+        className={`md:hidden overflow-hidden border-t border-rose-100/70 bg-white/95 shadow-sm transition-[max-height,opacity] duration-300 dark:border-rose-900/60 dark:bg-black/90 ${
           isMenuOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
