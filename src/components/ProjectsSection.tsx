@@ -1,4 +1,4 @@
-﻿import { ProjectsData } from "@/types/portfolio";
+import { ProjectsData } from "@/types/portfolio";
 
 type ProjectsSectionProps = {
   data: ProjectsData;
@@ -7,21 +7,25 @@ type ProjectsSectionProps = {
 const ProjectsSection = ({ data }: ProjectsSectionProps) => (
   <section
     id="proyectos"
-    className="bg-gradient-to-br from-red-50 via-white to-red-100 py-24 px-6 transition-colors dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950"
+    className="relative overflow-hidden bg-gradient-to-br from-rose-50 via-white to-rose-100 py-24 px-6 transition-colors dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950"
   >
-    <div className="max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-12 text-center text-red-600 dark:text-red-400">{data.title}</h2>
-      <div className="grid md:grid-cols-3 gap-8">
+    <div className="pointer-events-none absolute left-1/2 top-0 h-60 w-60 -translate-x-1/2 rounded-full bg-rose-200/40 blur-3xl dark:hidden" aria-hidden />
+    <div className="pointer-events-none absolute -bottom-24 left-10 h-52 w-52 rounded-full bg-rose-300/30 blur-3xl dark:hidden" aria-hidden />
+    <div className="relative mx-auto max-w-6xl">
+      <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-neutral-100">{data.title}</h2>
+      <div className="mt-12 grid gap-8 md:grid-cols-3">
         {data.items.map((project) => (
-          <div
+          <article
             key={project.title}
-            className="p-6 border border-red-200 rounded-xl bg-white shadow transition-colors hover:shadow-lg dark:border-neutral-700 dark:bg-neutral-900"
+            className="rounded-3xl border border-rose-100 bg-white/85 p-6 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-900/80"
           >
-            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-neutral-100">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-neutral-100">
               {project.title}
             </h3>
-            <p className="text-gray-600 leading-relaxed dark:text-neutral-300">{project.description}</p>
-          </div>
+            <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
+              {project.description}
+            </p>
+          </article>
         ))}
       </div>
     </div>

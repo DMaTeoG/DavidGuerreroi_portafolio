@@ -1,4 +1,5 @@
-﻿import type { ChangeEvent, FormEvent } from "react";
+import type { ChangeEvent, FormEvent } from "react";
+
 import { ContactData } from "@/types/portfolio";
 
 type ContactSectionProps = {
@@ -11,49 +12,51 @@ type ContactSectionProps = {
 const ContactSection = ({ data, formValues, onFieldChange, onSubmit }: ContactSectionProps) => (
   <section
     id="contacto"
-    className="bg-gradient-to-br from-red-50 via-white to-red-100 py-24 px-6 transition-colors dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950"
+    className="relative overflow-hidden bg-gradient-to-br from-rose-50 via-white to-rose-100 py-24 px-6 transition-colors dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950"
   >
-    <div className="max-w-3xl mx-auto">
-      <h2 className="text-3xl font-bold mb-12 text-center text-red-600 dark:text-red-400">{data.title}</h2>
-      <form onSubmit={onSubmit} className="space-y-6">
-      {data.fields.map((field) => {
-        const baseClass =
-          "w-full p-4 border border-red-200 rounded-xl bg-white text-gray-700 focus:ring-2 focus:ring-red-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:focus:ring-red-400";
-        const handleChange = (
-          event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-        ) => onFieldChange(field.name, event.target.value);
+    <div className="pointer-events-none absolute left-1/2 top-12 h-64 w-64 -translate-x-1/2 rounded-full bg-rose-200/40 blur-3xl dark:hidden" aria-hidden />
+    <div className="pointer-events-none absolute -bottom-20 right-12 h-56 w-56 rounded-full bg-rose-300/30 blur-3xl dark:hidden" aria-hidden />
+    <div className="relative mx-auto max-w-3xl">
+      <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-neutral-100">{data.title}</h2>
+      <form onSubmit={onSubmit} className="mt-12 space-y-6">
+        {data.fields.map((field) => {
+          const baseClass =
+            "w-full rounded-2xl border border-rose-100 bg-white/85 px-4 py-4 text-gray-700 shadow-sm transition-shadow focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200 dark:border-neutral-800 dark:bg-neutral-900/80 dark:text-neutral-100 dark:focus:border-neutral-600 dark:focus:ring-rose-300";
+          const handleChange = (
+            event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+          ) => onFieldChange(field.name, event.target.value);
 
-        if (field.type === "textarea") {
+          if (field.type === "textarea") {
+            return (
+              <textarea
+                key={field.name}
+                name={field.name}
+                placeholder={field.placeholder}
+                value={formValues[field.name] ?? ""}
+                onChange={handleChange}
+                className={`${baseClass} h-40 resize-none`}
+              />
+            );
+          }
+
           return (
-            <textarea
+            <input
               key={field.name}
+              type={field.type}
               name={field.name}
               placeholder={field.placeholder}
               value={formValues[field.name] ?? ""}
               onChange={handleChange}
-              className={`${baseClass} h-40`}
+              className={baseClass}
             />
           );
-        }
-
-        return (
-          <input
-            key={field.name}
-            type={field.type}
-            name={field.name}
-            placeholder={field.placeholder}
-            value={formValues[field.name] ?? ""}
-            onChange={handleChange}
-            className={baseClass}
-          />
-        );
-      })}
-      <button
-        type="submit"
-        className="w-full p-4 bg-red-600 text-white rounded-xl transition-colors hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-400"
-      >
-        {data.buttonLabel}
-      </button>
+        })}
+        <button
+          type="submit"
+          className="w-full rounded-full bg-rose-500 px-6 py-3 text-sm font-semibold text-white shadow transition-transform hover:-translate-y-0.5 hover:bg-rose-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-300 dark:bg-rose-400 dark:hover:bg-rose-300"
+        >
+          {data.buttonLabel}
+        </button>
       </form>
     </div>
   </section>

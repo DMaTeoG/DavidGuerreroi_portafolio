@@ -1,4 +1,4 @@
-﻿export interface NavbarLink {
+export interface NavbarLink {
   label: string;
   href: string;
 }
@@ -19,17 +19,18 @@ export interface ImageData {
   alt: string;
 }
 
+export type HeroSocialKey = "github" | "linkedin" | "instagram";
+
+export type HeroSocialLinks = Partial<Record<HeroSocialKey, string>>;
+
 export interface HeroData {
   title: string;
   description: string;
+  highlightName?: string;
   image?: ImageData;
   primaryCta: HeroButton;
   secondaryCta?: HeroButton;
-  social?: {
-    facebook?: string;
-    linkedin?: string;
-    instagram?: string;
-  };
+  social?: HeroSocialLinks;
 }
 
 export interface AboutData {
@@ -122,4 +123,12 @@ export interface PortfolioData {
   experienceHighlights: ExperienceHighlightsData;
   references: ReferencesData;
   contact: ContactData;
+}
+
+export type PortfolioLocale = "es" | "en";
+
+export interface PortfolioSiteData {
+  defaultLocale: PortfolioLocale;
+  locales: PortfolioLocale[];
+  content: Record<PortfolioLocale, PortfolioData>;
 }

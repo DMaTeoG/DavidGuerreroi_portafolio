@@ -1,4 +1,4 @@
-﻿// app/page.tsx
+// app/page.tsx
 "use client";
 
 import type { FormEvent } from "react";
@@ -15,32 +15,47 @@ import ExperienceSection from "@/components/ExperienceSection";
 import ExperienceHighlights from "@/components/ExperienceHighlights";
 import ReferencesSection from "@/components/ReferencesSection";
 import ContactSection from "@/components/ContactSection";
-import { PortfolioData } from "@/types/portfolio";
+import type { ContactField, PortfolioLocale, PortfolioSiteData } from "@/types/portfolio";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
-const data = rawData as unknown as PortfolioData;
-const initialFormState = data.contact.fields.reduce<Record<string, string>>((acc, field) => {
-  acc[field.name] = "";
-  return acc;
-}, {});
+const dataset = rawData as unknown as PortfolioSiteData;
+const initialLocale = dataset.defaultLocale ?? dataset.locales[0];
+
+const createInitialFormState = (fields: ContactField[]) =>
+  fields.reduce<Record<string, string>>((acc, field) => {
+    acc[field.name] = "";
+    return acc;
+  }, {});
+
+const THEME_STORAGE_KEY = "theme-preference";
+const LOCALE_STORAGE_KEY = "portfolio-locale";
 
 export default function Home() {
-  const [form, setForm] = useState<Record<string, string>>(initialFormState);
+  const [locale, setLocale] = useState<PortfolioLocale>(initialLocale);
+  const [form, setForm] = useState<Record<string, string>>(() =>
+    createInitialFormState(dataset.content[initialLocale].contact.fields)
+  );
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const data = dataset.content[locale];
 
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
     }
 
-    const storedTheme = window.localStorage.getItem("theme-preference");
+    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
     if (storedTheme === "dark" || storedTheme === "light") {
       setIsDarkMode(storedTheme === "dark");
-      return;
+    } else {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setIsDarkMode(prefersDark);
     }
 
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setIsDarkMode(prefersDark);
+    const storedLocale = window.localStorage.getItem(LOCALE_STORAGE_KEY) as PortfolioLocale | null;
+    if (storedLocale && dataset.locales.includes(storedLocale)) {
+      setLocale(storedLocale);
+    }
   }, []);
 
   useEffect(() => {
@@ -52,9 +67,22 @@ export default function Home() {
     document.documentElement.setAttribute("data-theme", isDarkMode ? "dark" : "light");
 
     if (typeof window !== "undefined") {
-      window.localStorage.setItem("theme-preference", isDarkMode ? "dark" : "light");
+      window.localStorage.setItem(THEME_STORAGE_KEY, isDarkMode ? "dark" : "light");
     }
   }, [isDarkMode]);
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("lang", locale);
+    }
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+    }
+  }, [locale]);
+
+  useEffect(() => {
+    setForm(createInitialFormState(data.contact.fields));
+  }, [data.contact.fields]);
 
   const handleFieldChange = (name: string, value: string) => {
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -62,14 +90,34 @@ export default function Home() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Formulario enviado:", form);
+    const logLabel = locale === "es" ? "Formulario enviado" : "Form submitted";
+    console.log(`${logLabel}:`, form);
+  };
+
+  const handleChangeLocale = (nextLocale: PortfolioLocale) => {
+    if (nextLocale === locale) {
+      return;
+    }
+
+    if (!dataset.locales.includes(nextLocale)) {
+      return;
+    }
+
+    setLocale(nextLocale);
   };
 
   return (
     <main
       className={`${poppins.className} font-sans scroll-smooth text-gray-800 transition-colors dark:bg-neutral-950 dark:text-neutral-100`}
     >
-      <Navbar data={data.navbar} isDarkMode={isDarkMode} onToggleTheme={() => setIsDarkMode((prev) => !prev)} />
+      <Navbar
+        data={data.navbar}
+        isDarkMode={isDarkMode}
+        onToggleTheme={() => setIsDarkMode((prev) => !prev)}
+        availableLocales={dataset.locales}
+        currentLocale={locale}
+        onChangeLocale={handleChangeLocale}
+      />
       <HeroSection data={data.hero} />
       <AboutSection data={data.about} />
       <TechnologiesSection data={data.technologies} />
