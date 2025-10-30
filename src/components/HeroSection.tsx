@@ -52,8 +52,7 @@ const HeroSection = ({ data }: HeroSectionProps) => {
     >
       <div className="pointer-events-none absolute -left-32 top-16 h-80 w-80 rounded-full bg-rose-200/50 blur-3xl dark:bg-rose-900/40" aria-hidden />
       <div className="pointer-events-none absolute -right-24 -bottom-12 h-72 w-72 rounded-full bg-rose-300/40 blur-3xl dark:bg-rose-900/30" aria-hidden />
-
-        <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-12 text-center text-gray-900 transition-colors duration-500 ease-out md:flex-row md:items-start md:text-left dark:text-white">
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-12 text-center text-gray-900 transition-colors duration-500 ease-out md:flex-row md:items-center md:text-left dark:text-white">
         <div className="md:flex-1 md:pt-8">
           <h2 className="text-4xl font-bold leading-tight md:text-5xl">
             {highlightParts ? (
@@ -104,9 +103,9 @@ const HeroSection = ({ data }: HeroSectionProps) => {
             </div>
           ) : null}
         </div>
-        <div className="md:flex md:flex-1 md:justify-end">
+        <div className="md:flex md:flex-1 md:justify-center">
           {data.image ? (
-            <div className="relative flex justify-center md:justify-end">
+            <div className="relative flex justify-center md:justify-center">
               <span className="absolute inset-0 rounded-full bg-rose-200/50 blur-2xl dark:bg-rose-900/30" aria-hidden />
               <Image
                 src={data.image.src}
