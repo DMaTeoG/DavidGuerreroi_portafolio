@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { NavbarData, PortfolioLocale } from "@/types/portfolio";
 
@@ -30,9 +30,10 @@ const Navbar = ({
   onChangeLocale,
 }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-  const closeMenu = () => setIsMenuOpen(false);
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
   const handleLocaleClick = (locale: PortfolioLocale) => {
     onChangeLocale(locale);
     closeMenu();
@@ -53,14 +54,44 @@ const Navbar = ({
       : "Switch to dark mode";
   const languageLegend = currentLocale === "es" ? "Idioma" : "Language";
 
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return;
+    }
+
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target as Node;
+      if (navRef.current && !navRef.current.contains(target)) {
+        closeMenu();
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [closeMenu, isMenuOpen]);
+
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full border-b border-rose-100/70 bg-white/80 backdrop-blur shadow-sm transition-colors duration-500 ease-out dark:border-rose-900/60 dark:bg-black/80">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 text-gray-900 transition-colors duration-500 dark:text-white">
+    <nav
+      ref={navRef}
+      className="fixed top-0 left-0 z-50 w-full border-b border-rose-100/70 bg-white/80 backdrop-blur shadow-sm transition-colors duration-500 ease-out dark:border-rose-900/60 dark:bg-black/80"
+    >
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4 text-gray-900 transition-colors duration-500 dark:text-white">
         <h1 className="text-xl font-semibold tracking-tight text-gray-900 transition-colors dark:text-neutral-100">
           {data.name}
         </h1>
-        <div className="flex items-center gap-3 md:gap-6">
-          <ul className="hidden items-center gap-6 text-sm font-semibold text-gray-700 transition-colors md:flex dark:text-neutral-200">
+        <div className="flex flex-1 items-center justify-end gap-3 overflow-x-auto whitespace-nowrap md:min-w-0 md:flex-nowrap md:gap-4 lg:gap-6">
+          <ul className="hidden flex-shrink-0 items-center gap-6 text-sm font-semibold text-gray-700 transition-colors md:flex dark:text-neutral-200">
             {data.links.map((link) => (
               <li key={link.href}>
                 <a
@@ -73,7 +104,7 @@ const Navbar = ({
               </li>
             ))}
           </ul>
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden flex-shrink-0 items-center justify-end gap-2 md:flex">
             {availableLocales.map((locale) => {
               const isActive = locale === currentLocale;
               return (
@@ -96,7 +127,7 @@ const Navbar = ({
           <button
             type="button"
             onClick={onToggleTheme}
-            className="flex items-center gap-2 rounded-full border border-rose-200/80 bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm transition-colors hover:border-rose-400 hover:bg-rose-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:border-neutral-500 dark:hover:bg-neutral-800"
+            className="flex shrink-0 items-center gap-2 rounded-full border border-rose-200/80 bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm transition-colors hover:border-rose-400 hover:bg-rose-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:border-neutral-500 dark:hover:bg-neutral-800"
             aria-pressed={isDarkMode}
             aria-label={themeAriaLabel}
           >
