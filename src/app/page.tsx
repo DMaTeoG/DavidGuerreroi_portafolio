@@ -11,7 +11,6 @@ import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import TechnologiesSection from "@/components/TechnologiesSection";
 import ProjectsSection from "@/components/ProjectsSection";
-import ExperienceSection from "@/components/ExperienceSection";
 import ExperienceHighlights from "@/components/ExperienceHighlights";
 import ReferencesSection from "@/components/ReferencesSection";
 import ContactSection from "@/components/ContactSection";
@@ -155,7 +154,6 @@ export default function Home() {
       <AboutSection data={data.about} />
       <TechnologiesSection data={data.technologies} />
       <ProjectsSection data={data.projects} />
-      <ExperienceSection data={data.experience} />
       <ExperienceHighlights data={data.experienceHighlights} />
       <ReferencesSection data={data.references} />
       <ContactSection
