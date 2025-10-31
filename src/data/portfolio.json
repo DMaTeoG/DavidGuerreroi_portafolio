@@ -10,9 +10,8 @@
           { "label": "Sobre mi", "href": "#sobre" },
           { "label": "Tecnologias", "href": "#tecnologias" },
           { "label": "Proyectos", "href": "#proyectos" },
-          { "label": "Experiencia", "href": "#experiencia" },
           { "label": "Experiencias destacadas", "href": "#experiencias-destacadas" },
-          { "label": "Referencias", "href": "#referencias" },
+          { "label": "Testimonio", "href": "#referencias" },
           { "label": "Contacto", "href": "#contacto" }
         ]
       },
@@ -107,7 +106,7 @@
         ]
       },
       "references": {
-        "title": "Referencias",
+        "title": "Testimonios",
         "subtitle": "Lo que dicen las personas que han colaborado conmigo.",
         "items": [
           {
@@ -125,33 +124,11 @@
             "name": "Carlos Rodriguez",
             "role": "Mentor de Proyecto",
             "relation": "Mentor en programa de incubacion",
-            "quote": "Demuestra gran potencial en el desarrollo frontend. Su capacidad de adaptacion y aprendizaje es excepcional.",
-            "rating": 5,
+            "quote": "Demuestra gran potencial en el desarrollo frontend. Su capacidad de adaptacion y aprendizaje rapido lo convierten en un activo para cualquier equipo.",
+            "rating": 4,
             "contact": [
               { "type": "email", "label": "Email", "href": "mailto:carlos.rodriguez@example.com" },
-              { "type": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com" }
-            ]
-          },
-          {
-            "name": "Ana Martinez",
-            "role": "Colaboradora en Proyecto",
-            "relation": "Partner en startup de tecnologia",
-            "quote": "Trabajar con Mateo fue una experiencia muy positiva. Su creatividad y habilidades tecnicas son impresionantes.",
-            "rating": 5,
-            "contact": [
-              { "type": "email", "label": "Email", "href": "mailto:ana.martinez@example.com" },
-              { "type": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com" }
-            ]
-          },
-          {
-            "name": "Dr. Luis Perez",
-            "role": "Profesor de Programacion",
-            "relation": "Docente en la universidad",
-            "quote": "Estudiante destacado con gran potencial. Su dedicacion y curiosidad por aprender nuevas tecnologias es notable.",
-            "rating": 5,
-            "contact": [
-              { "type": "email", "label": "Email", "href": "mailto:luis.perez@example.com" },
-              { "type": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com" }
+              { "type": "website", "label": "Portfolio", "href": "https://www.portfolio.com" }
             ]
           }
         ]
@@ -174,7 +151,6 @@
           { "label": "About me", "href": "#sobre" },
           { "label": "Technologies", "href": "#tecnologias" },
           { "label": "Projects", "href": "#proyectos" },
-          { "label": "Experience", "href": "#experiencia" },
           { "label": "Highlights", "href": "#experiencias-destacadas" },
           { "label": "References", "href": "#referencias" },
           { "label": "Contact", "href": "#contacto" }
@@ -199,13 +175,13 @@
         "social": {
           "linkedin": "https://www.linkedin.com/in/mateoguerrero",
           "instagram": "https://www.instagram.com/mateo.guerrero",
-          "github": "https://github.com/mateoguerrero"
+          "github": "https://github.com/DMaTeoG"
         },
         "highlightName": "Mateo"
       },
       "about": {
         "title": "About me",
-        "description": "I enjoy working with teams because collaboration is key to great results. I am passionate about fitness and value discipline both in my personal life and professional growth. My love for technology keeps me learning the latest trends and joining projects that create a positive impact.",
+        "description": "I enjoy working in teams because collaboration is key to achieving great results. I'm passionate about fitness and discipline, both in my personal life and in my professional growth. My love for technology motivates me to stay current with the latest trends and to take part in projects that create a positive impact.",
         "image": {
           "src": "/images/about-photo.png",
           "alt": "Mateo Guerrero smiling"
@@ -220,7 +196,7 @@
         "items": [
           {
             "title": "E-commerce Platform",
-            "description": "Comprehensive e-commerce platform built with React and Node.js."
+            "description": "Full-featured commerce platform built with React and Node.js."
           },
           {
             "title": "Task Manager",
@@ -237,24 +213,24 @@
         "items": [
           {
             "role": "Frontend Developer",
-            "description": "Developed modern, responsive interfaces using React."
+            "description": "Built modern, responsive interfaces using React."
           },
           {
             "role": "Full Stack Developer",
-            "description": "Delivered end-to-end web applications with a strong focus on user experience."
+            "description": "Delivered end-to-end web applications focused on user experience."
           }
         ]
       },
       "experienceHighlights": {
-        "title": "Featured Experiences",
+        "title": "Highlights",
         "items": [
           {
             "role": "Frontend Developer",
             "company": "TechVision",
             "period": "2023 - Present",
-            "description": "Led the development of responsive interfaces for SaaS products focused on data analytics.",
+            "description": "Led responsive interface development for data analytics SaaS products.",
             "achievements": [
-              "Implemented an atomic design system that cut iteration time by 30%",
+              "Implemented atomic design system and reduced iteration time by 30%",
               "Migrated critical components to Next.js with full accessibility support"
             ]
           },
@@ -262,23 +238,23 @@
             "role": "Full Stack Developer",
             "company": "Innova Labs",
             "period": "2021 - 2023",
-            "description": "Built and maintained end-to-end web applications centered on personalized user experiences.",
+            "description": "Built and maintained end-to-end web apps focused on personalized user experiences.",
             "achievements": [
-              "Designed CI/CD pipelines that reduced deployment times to under 10 minutes",
-              "Integrated real-time analytics dashboards that improved business decision-making"
+              "Designed CI/CD pipelines that cut deployment time to under 10 minutes",
+              "Integrated real-time analytics dashboards to improve business decisions"
             ]
           }
         ]
       },
       "references": {
-        "title": "References",
-        "subtitle": "What people who worked with me say.",
+        "title": "testimonies",
+        "subtitle": "What collaborators say about working with me.",
         "items": [
           {
             "name": "Maria Gonzalez",
-            "role": "University classmate",
-            "relation": "Project Lead in academic collaboration",
-            "quote": "Excellent teammate, very dedicated and always willing to help. His passion for web development is admirable.",
+            "role": "University Teammate",
+            "relation": "Project lead during academic collaboration",
+            "quote": "Excellent teammate, always dedicated and ready to help. His passion for web development is inspiring.",
             "rating": 5,
             "contact": [
               { "type": "email", "label": "Email", "href": "mailto:maria.gonzalez@example.com" },
@@ -287,35 +263,13 @@
           },
           {
             "name": "Carlos Rodriguez",
-            "role": "Project mentor",
-            "relation": "Mentor in incubation program",
-            "quote": "Shows great potential in frontend development. His adaptability and hunger to learn are exceptional.",
-            "rating": 5,
+            "role": "Project Mentor",
+            "relation": "Mentor in startup incubation program",
+            "quote": "Shows great potential as a frontend developer. His adaptability and fast learning make him an asset to any team.",
+            "rating": 4,
             "contact": [
               { "type": "email", "label": "Email", "href": "mailto:carlos.rodriguez@example.com" },
-              { "type": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com" }
-            ]
-          },
-          {
-            "name": "Ana Martinez",
-            "role": "Project collaborator",
-            "relation": "Partner in tech startup",
-            "quote": "Working with Mateo was a very positive experience. His creativity and technical skills are impressive.",
-            "rating": 5,
-            "contact": [
-              { "type": "email", "label": "Email", "href": "mailto:ana.martinez@example.com" },
-              { "type": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com" }
-            ]
-          },
-          {
-            "name": "Dr. Luis Perez",
-            "role": "Programming professor",
-            "relation": "Faculty at the university",
-            "quote": "Outstanding student with great potential. His dedication and curiosity to learn new technologies stand out.",
-            "rating": 5,
-            "contact": [
-              { "type": "email", "label": "Email", "href": "mailto:luis.perez@example.com" },
-              { "type": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com" }
+              { "type": "website", "label": "Portfolio", "href": "https://www.portfolio.com" }
             ]
           }
         ]
@@ -323,9 +277,9 @@
       "contact": {
         "title": "Contact",
         "fields": [
-          { "name": "nombre", "type": "text", "placeholder": "Name" },
-          { "name": "correo", "type": "email", "placeholder": "Email" },
-          { "name": "mensaje", "type": "textarea", "placeholder": "Message" }
+          { "name": "name", "type": "text", "placeholder": "Name" },
+          { "name": "email", "type": "email", "placeholder": "Email" },
+          { "name": "message", "type": "textarea", "placeholder": "Message" }
         ],
         "buttonLabel": "Send Message"
       }
