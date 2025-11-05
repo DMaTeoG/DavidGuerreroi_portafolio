@@ -2,7 +2,7 @@
 "use client";
 
 import type { FormEvent } from "react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Poppins } from "next/font/google";
 
 import rawData from "@/data/portfolio.json";
@@ -29,67 +29,62 @@ const createInitialFormState = (fields: ContactField[]) =>
 
 const THEME_STORAGE_KEY = "theme-preference";
 const LOCALE_STORAGE_KEY = "portfolio-locale";
+type ThemeMode = "light" | "dark";
 
 export default function Home() {
   const [locale, setLocale] = useState<PortfolioLocale>(initialLocale);
   const [form, setForm] = useState<Record<string, string>>(() =>
     createInitialFormState(dataset.content[initialLocale].contact.fields)
   );
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [theme, setTheme] = useState<ThemeMode>(() => {
+    if (typeof window === "undefined") {
+      return "light";
+    }
+    const stored = window.localStorage.getItem(THEME_STORAGE_KEY) as ThemeMode | null;
+    if (stored === "dark" || stored === "light") {
+      return stored;
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  });
+  const isDarkMode = theme === "dark";
 
   const data = dataset.content[locale];
 
-  const setThemeAttributes = (mode: "dark" | "light", options: { persist?: boolean } = {}) => {
-    if (typeof document !== "undefined") {
-      const root = document.documentElement;
-      const body = document.body;
-
-      root.classList.toggle("dark", mode === "dark");
-      root.setAttribute("data-theme", mode);
-      root.style.setProperty("color-scheme", mode);
-
-      body.setAttribute("data-theme", mode);
-      body.classList.toggle("dark-mode", mode === "dark");
-      body.classList.toggle("light-mode", mode === "light");
-      body.style.setProperty("color-scheme", mode);
+  const setThemeAttributes = useCallback((mode: ThemeMode) => {
+    if (typeof document === "undefined") {
+      return;
     }
+    const root = document.documentElement;
+    root.classList.toggle("dark", mode === "dark");
+    root.setAttribute("data-theme", mode);
+    root.style.setProperty("color-scheme", mode);
+  }, []);
 
-    if (options.persist !== false && typeof window !== "undefined") {
-      window.localStorage.setItem(THEME_STORAGE_KEY, mode);
-    }
-  };
+  useEffect(() => {
+    setThemeAttributes(theme);
+  }, [theme, setThemeAttributes]);
 
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
     }
-
-    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-    const initialTheme: "dark" | "light" =
-      storedTheme === "dark" || storedTheme === "light"
-        ? storedTheme
-        : window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-
-    setThemeAttributes(initialTheme, { persist: Boolean(storedTheme) });
-    setIsDarkMode(initialTheme === "dark");
-
     const storedLocale = window.localStorage.getItem(LOCALE_STORAGE_KEY) as PortfolioLocale | null;
     if (storedLocale && dataset.locales.includes(storedLocale)) {
       setLocale(storedLocale);
     }
+  }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleMediaChange = (event: MediaQueryListEvent) => {
-      const manualPreference = window.localStorage.getItem(THEME_STORAGE_KEY);
+      const manualPreference = window.localStorage.getItem(THEME_STORAGE_KEY) as ThemeMode | null;
       if (manualPreference === "dark" || manualPreference === "light") {
         return;
       }
-
-      const systemTheme = event.matches ? "dark" : "light";
-      setThemeAttributes(systemTheme, { persist: false });
-      setIsDarkMode(systemTheme === "dark");
+      setTheme(event.matches ? "dark" : "light");
     };
 
     mediaQuery.addEventListener("change", handleMediaChange);
@@ -120,9 +115,12 @@ export default function Home() {
   };
 
   const handleToggleTheme = () => {
-    setIsDarkMode((prev) => {
-      const next = !prev;
-      setThemeAttributes(next ? "dark" : "light");
+    setTheme((prev) => {
+      const next = prev === "dark" ? "light" : "dark";
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(THEME_STORAGE_KEY, next);
+      }
+      setThemeAttributes(next);
       return next;
     });
   };
@@ -141,7 +139,7 @@ export default function Home() {
 
   return (
     <main
-      className={`${poppins.className} font-sans scroll-smooth text-gray-800 transition-colors duration-500 ease-out dark:bg-black dark:text-white`}
+      className={`${poppins.className} font-sans scroll-smooth bg-white text-gray-800 transition-colors duration-500 ease-out dark:bg-black dark:text-white`}
     >
       <Navbar
         data={data.navbar}
