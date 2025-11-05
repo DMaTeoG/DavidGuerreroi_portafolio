@@ -23,9 +23,15 @@ const ReferencesSection = ({ data }: ReferencesSectionProps) => {
 
   const ratingIcons = (rating: number) =>
     Array.from({ length: Math.max(1, Math.min(5, rating)) }, (_, index) => (
-      <span key={index} className="text-xs font-semibold text-rose-500">
-        *
-      </span>
+      <svg
+        key={index}
+        aria-hidden
+        className="h-3 w-3 text-amber-500 dark:text-amber-400"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path d="M12 3.25l2.317 4.693 5.183.754-3.75 3.655.886 5.169L12 15.9l-4.636 2.621.886-5.169-3.75-3.655 5.183-.754L12 3.25z" />
+      </svg>
     ));
 
   return (
@@ -61,7 +67,7 @@ const ReferencesSection = ({ data }: ReferencesSectionProps) => {
                       {getInitials(item.name)}
                     </div>
                   )}
-                  <span className="absolute -bottom-1 -right-1 flex items-center gap-1 rounded-full bg-rose-500 px-2 py-0.5 text-xs font-semibold text-white dark:bg-rose-400">
+                  <span className="absolute -bottom-1 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full bg-rose-500 px-2 py-0.5 text-xs font-semibold text-white dark:bg-rose-400">
                     {ratingIcons(item.rating)}
                   </span>
                 </div>

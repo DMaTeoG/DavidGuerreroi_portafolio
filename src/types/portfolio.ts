@@ -47,6 +47,9 @@ export interface TechnologiesData {
 export interface ProjectItem {
   title: string;
   description: string;
+  preview?: ImageData;
+  link?: string;
+  technologies?: string[];
 }
 
 export interface ProjectsData {
@@ -113,6 +116,16 @@ export interface ContactData {
   buttonLabel: string;
 }
 
+export interface FooterLink {
+  label: string;
+  href: string;
+}
+
+export interface FooterData {
+  text: string;
+  links?: FooterLink[];
+}
+
 export interface PortfolioData {
   navbar: NavbarData;
   hero: HeroData;
@@ -123,6 +136,7 @@ export interface PortfolioData {
   experienceHighlights: ExperienceHighlightsData;
   references: ReferencesData;
   contact: ContactData;
+  footer: FooterData;
 }
 
 export type PortfolioLocale = "es" | "en";

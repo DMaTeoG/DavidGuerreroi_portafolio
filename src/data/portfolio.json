@@ -10,7 +10,7 @@
           { "label": "Sobre mi", "href": "#sobre" },
           { "label": "Tecnologias", "href": "#tecnologias" },
           { "label": "Proyectos", "href": "#proyectos" },
-          { "label": "Experiencias destacadas", "href": "#experiencias-destacadas" },
+          { "label": "Experiencias ", "href": "#experiencias-destacadas" },
           { "label": "Testimonio", "href": "#referencias" },
           { "label": "Contacto", "href": "#contacto" }
         ]
@@ -55,15 +55,33 @@
         "items": [
           {
             "title": "E-commerce Platform",
-            "description": "Plataforma completa de comercio electronico con React y Node.js."
+            "description": "Plataforma completa de comercio electronico con React y Node.js.",
+            "preview": {
+              "src": "/globe.svg",
+              "alt": "Mockup del proyecto E-commerce Platform"
+            },
+            "link": "https://github.com/DMaTeoG/ecommerce-platform",
+            "technologies": ["React", "Next.js", "Node.js", "Stripe"]
           },
           {
             "title": "Task Manager",
-            "description": "Aplicacion de gestion de tareas con funcionalidades avanzadas."
+            "description": "Aplicacion de gestion de tareas con funcionalidades avanzadas.",
+            "preview": {
+              "src": "/globe.svg",
+              "alt": "Panel principal del Task Manager"
+            },
+            "link": "https://github.com/DMaTeoG/task-manager",
+            "technologies": ["React", "TypeScript", "Tailwind CSS"]
           },
           {
             "title": "Weather App",
-            "description": "Aplicacion del clima con datos en tiempo real y diseno intuitivo."
+            "description": "Aplicacion del clima con datos en tiempo real y diseno intuitivo.",
+            "preview": {
+              "src": "/globe.svg",
+              "alt": "Ilustracion del panel de Weather App"
+            },
+            "link": "https://github.com/DMaTeoG/weather-app",
+            "technologies": ["Next.js", "OpenWeather API", "SWR"]
           }
         ]
       },
@@ -130,6 +148,17 @@
               { "type": "email", "label": "Email", "href": "mailto:carlos.rodriguez@example.com" },
               { "type": "website", "label": "Portfolio", "href": "https://www.portfolio.com" }
             ]
+          },
+          {
+            "name": "Sofia Martinez",
+            "role": "Product Owner",
+            "relation": "Lider de producto en proyecto SaaS",
+            "quote": "Mateo supo traducir requisitos complejos en interfaces claras. Sus entregas puntuales y proactividad fueron clave para el lanzamiento.",
+            "rating": 5,
+            "contact": [
+              { "type": "email", "label": "Email", "href": "mailto:sofia.martinez@example.com" },
+              { "type": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com" }
+            ]
           }
         ]
       },
@@ -141,6 +170,13 @@
           { "name": "mensaje", "type": "textarea", "placeholder": "Mensaje" }
         ],
         "buttonLabel": "Enviar Mensaje"
+      },
+      "footer": {
+        "text": "© 2025 Mateo Guerrero. Todos los derechos reservados.",
+        "links": [
+          { "label": "LinkedIn", "href": "https://www.linkedin.com/in/mateoguerrero" },
+          { "label": "GitHub", "href": "https://github.com/DMaTeoG" }
+        ]
       }
     },
     "en": {
@@ -196,15 +232,33 @@
         "items": [
           {
             "title": "E-commerce Platform",
-            "description": "Full-featured commerce platform built with React and Node.js."
+            "description": "Full-featured commerce platform built with React and Node.js.",
+            "preview": {
+              "src": "/images/hero-photo.png",
+              "alt": "Mockup of the E-commerce Platform project"
+            },
+            "link": "https://github.com/DMaTeoG/ecommerce-platform",
+            "technologies": ["React", "Next.js", "Node.js", "Stripe"]
           },
           {
             "title": "Task Manager",
-            "description": "Task management application with advanced productivity features."
+            "description": "Task management application with advanced productivity features.",
+            "preview": {
+              "src": "/images/about-photo.png",
+              "alt": "Main dashboard of the Task Manager app"
+            },
+            "link": "https://github.com/DMaTeoG/task-manager",
+            "technologies": ["React", "TypeScript", "Tailwind CSS"]
           },
           {
             "title": "Weather App",
-            "description": "Weather application with real-time data and an intuitive design."
+            "description": "Weather application with real-time data and an intuitive design.",
+            "preview": {
+              "src": "/globe.svg",
+              "alt": "Illustration of the Weather App interface"
+            },
+            "link": "https://github.com/DMaTeoG/weather-app",
+            "technologies": ["Next.js", "OpenWeather API", "SWR"]
           }
         ]
       },
@@ -271,6 +325,17 @@
               { "type": "email", "label": "Email", "href": "mailto:carlos.rodriguez@example.com" },
               { "type": "website", "label": "Portfolio", "href": "https://www.portfolio.com" }
             ]
+          },
+          {
+            "name": "Sofia Martinez",
+            "role": "Product Owner",
+            "relation": "Product lead on SaaS initiative",
+            "quote": "Mateo turned complex requirements into clear interfaces. His timely delivery and proactive mindset were critical for launch success.",
+            "rating": 5,
+            "contact": [
+              { "type": "email", "label": "Email", "href": "mailto:sofia.martinez@example.com" },
+              { "type": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com" }
+            ]
           }
         ]
       },
@@ -282,6 +347,13 @@
           { "name": "message", "type": "textarea", "placeholder": "Message" }
         ],
         "buttonLabel": "Send Message"
+      },
+      "footer": {
+        "text": "© 2025 Mateo Guerrero. All rights reserved.",
+        "links": [
+          { "label": "LinkedIn", "href": "https://www.linkedin.com/in/mateoguerrero" },
+          { "label": "GitHub", "href": "https://github.com/DMaTeoG" }
+        ]
       }
     }
   }

@@ -90,8 +90,8 @@ const Navbar = ({
         <h1 className="text-xl font-semibold tracking-tight text-gray-900 transition-colors dark:text-neutral-100">
           {data.name}
         </h1>
-        <div className="flex flex-1 items-center justify-end gap-3 overflow-x-auto whitespace-nowrap md:min-w-0 md:flex-nowrap md:gap-4 lg:gap-6">
-          <ul className="hidden flex-shrink-0 items-center gap-6 text-sm font-semibold text-gray-700 transition-colors md:flex dark:text-neutral-200">
+        <div className="flex flex-1 flex-wrap items-center justify-end gap-3 md:min-w-0 md:gap-4 lg:gap-6">
+          <ul className="hidden flex flex-wrap items-center justify-end gap-x-6 gap-y-2 text-sm font-semibold text-gray-700 transition-colors md:flex md:flex-1 md:min-w-0 dark:text-neutral-200">
             {data.links.map((link) => (
               <li key={link.href}>
                 <a
@@ -146,9 +146,6 @@ const Navbar = ({
                   <path strokeLinecap="round" d="M12 3v1.5M12 19.5V21M4.22 4.22l1.06 1.06M18.72 18.72l1.06 1.06M3 12h1.5M19.5 12H21M4.22 19.78l1.06-1.06M18.72 5.28l1.06-1.06" />
                 </svg>
               )}
-            </span>
-            <span className="hidden sm:inline">
-              {themeLabel}
             </span>
           </button>
           <button

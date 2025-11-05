@@ -14,6 +14,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ExperienceHighlights from "@/components/ExperienceHighlights";
 import ReferencesSection from "@/components/ReferencesSection";
 import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 import type { ContactField, PortfolioLocale, PortfolioSiteData } from "@/types/portfolio";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
@@ -162,6 +163,7 @@ export default function Home() {
         onFieldChange={handleFieldChange}
         onSubmit={handleSubmit}
       />
+      <Footer data={data.footer} />
     </main>
   );
 }
