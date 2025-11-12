@@ -32,12 +32,22 @@ export default function RootLayout({
   try {
     var KEY = "theme-preference";
     var stored = localStorage.getItem(KEY);
-    var mode = stored === "dark" || stored === "light"
-      ? stored
-      : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    var mode = stored === "dark" || stored === "light" ? stored : "light";
     var root = document.documentElement;
-    root.classList.toggle("dark", mode === "dark");
-    root.setAttribute("data-theme", mode);
+    var apply = function(node) {
+      if (!node) return;
+      node.classList.toggle("dark", mode === "dark");
+      node.setAttribute("data-theme", mode);
+    };
+    apply(root);
+    if (document.body) {
+      apply(document.body);
+    } else {
+      document.addEventListener("DOMContentLoaded", function handle() {
+        document.removeEventListener("DOMContentLoaded", handle);
+        apply(document.body);
+      });
+    }
     root.style.colorScheme = mode;
   } catch (e) {}
 })();
