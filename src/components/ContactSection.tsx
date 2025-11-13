@@ -9,9 +9,18 @@ type ContactSectionProps = {
   formValues: Record<string, string>;
   onFieldChange: (name: string, value: string) => void;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  isSubmitted: boolean;
+  successMessage?: string;
 };
 
-const ContactSection = ({ data, formValues, onFieldChange, onSubmit }: ContactSectionProps) => {
+const ContactSection = ({
+  data,
+  formValues,
+  onFieldChange,
+  onSubmit,
+  isSubmitted,
+  successMessage,
+}: ContactSectionProps) => {
   const { ref, isVisible } = useRevealOnScroll<HTMLElement>();
 
   return (
@@ -78,6 +87,11 @@ const ContactSection = ({ data, formValues, onFieldChange, onSubmit }: ContactSe
             {data.buttonLabel}
           </button>
         </form>
+        {isSubmitted && successMessage ? (
+          <p className="mt-4 text-center text-sm font-semibold text-rose-500 transition-opacity duration-500 dark:text-rose-300">
+            {successMessage}
+          </p>
+        ) : null}
       </div>
     </section>
   );

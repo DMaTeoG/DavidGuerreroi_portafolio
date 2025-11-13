@@ -38,9 +38,14 @@ export default function Home() {
     createInitialFormState(dataset.content[initialLocale].contact.fields)
   );
   const [theme, setTheme] = useState<ThemeMode | null>(null);
+  const [submitted, setSubmitted] = useState(false);
   const isDarkMode = theme === "dark";
 
   const data = dataset.content[locale];
+  const successMessage =
+    locale === "es"
+      ? "¡Gracias! Me pondré en contacto contigo pronto."
+      : "Thanks! I will get back to you soon.";
 
   const setThemeAttributes = useCallback((mode: ThemeMode) => {
     if (typeof document === "undefined") {
@@ -107,6 +112,22 @@ export default function Home() {
     event.preventDefault();
     const logLabel = locale === "es" ? "Formulario enviado" : "Form submitted";
     console.log(`${logLabel}:`, form);
+
+    const targetEmail = data.contact.email;
+    if (typeof window !== "undefined" && targetEmail) {
+      const subject =
+        locale === "es" ? "Nuevo mensaje desde el portafolio" : "New message from portfolio";
+      const bodyLines = data.contact.fields.map((field) => {
+        const label = field.placeholder || field.name;
+        const value = form[field.name] ?? "";
+        return `${label}: ${value}`;
+      });
+      const mailtoUrl = `mailto:${encodeURIComponent(targetEmail)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+      window.location.href = mailtoUrl;
+    }
+
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 4000);
   };
 
   const getDocumentTheme = () => {
@@ -167,6 +188,8 @@ export default function Home() {
         formValues={form}
         onFieldChange={handleFieldChange}
         onSubmit={handleSubmit}
+        isSubmitted={submitted}
+        successMessage={successMessage}
       />
       <Footer data={data.footer} />
       <ScrollToTopButton />

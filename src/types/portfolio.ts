@@ -49,6 +49,7 @@ export interface ProjectItem {
   description: string;
   preview?: ImageData;
   link?: string;
+  demo?: string;
   technologies?: string[];
 }
 
@@ -114,6 +115,7 @@ export interface ContactData {
   title: string;
   fields: ContactField[];
   buttonLabel: string;
+  email?: string;
 }
 
 export interface FooterLink {

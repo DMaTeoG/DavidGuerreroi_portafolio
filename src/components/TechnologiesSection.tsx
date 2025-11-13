@@ -4,9 +4,11 @@ import {
   SiDjango,
   SiHtml5,
   SiJavascript,
+  SiNextdotjs,
   SiNodedotjs,
   SiPython,
   SiReact,
+  SiTypescript,
 } from "react-icons/si";
 
 import ParallaxBlob from "@/components/ParallaxBlob";
@@ -24,9 +26,11 @@ const iconMap: Partial<Record<string, ReactElement>> = {
   CSS: <SiCss3 aria-hidden className={`${iconClass} text-blue-500`} />,
   JavaScript: <SiJavascript aria-hidden className={`${iconClass} text-yellow-400`} />,
   React: <SiReact aria-hidden className={`${iconClass} text-sky-400`} />,
+  "Next.js": <SiNextdotjs aria-hidden className={`${iconClass} text-gray-900 dark:text-white`} />,
   "Node.js": <SiNodedotjs aria-hidden className={`${iconClass} text-lime-500`} />,
   Python: <SiPython aria-hidden className={`${iconClass} text-blue-400`} />,
   Django: <SiDjango aria-hidden className={`${iconClass} text-emerald-600`} />,
+  TypeScript: <SiTypescript aria-hidden className={`${iconClass} text-blue-500`} />,
 };
 
 const getFallbackIcon = (label: string): ReactElement => (

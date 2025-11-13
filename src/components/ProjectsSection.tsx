@@ -34,9 +34,9 @@ const ProjectsSection = ({ data }: ProjectsSectionProps) => {
               }`}
               style={{ transitionDelay: `${Math.min(index, 5) * 90}ms` }}
             >
-              {project.link ? (
+              {project.demo || project.link ? (
                 <a
-                  href={project.link}
+                  href={project.demo ?? project.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative block overflow-hidden rounded-2xl border border-rose-100/60 bg-rose-50/70 transition-transform hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 dark:border-rose-900/40 dark:bg-neutral-900/60"
@@ -58,7 +58,7 @@ const ProjectsSection = ({ data }: ProjectsSectionProps) => {
                     )}
                   </div>
                   <span className="pointer-events-none absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-rose-500 shadow-sm transition-opacity duration-300 group-hover:opacity-100 dark:bg-black/80 dark:text-rose-300">
-                    <span aria-hidden>{viewProjectLabel}</span>
+                    <span aria-hidden>{project.demo ? "Ver demo" : viewProjectLabel}</span>
                     <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M7 17L17 7M7 7h10v10" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
