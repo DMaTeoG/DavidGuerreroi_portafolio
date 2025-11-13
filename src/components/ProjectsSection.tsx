@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FaGithub } from "react-icons/fa";
 
 import ParallaxBlob from "@/components/ParallaxBlob";
 import useRevealOnScroll from "@/hooks/useRevealOnScroll";
@@ -102,6 +103,17 @@ const ProjectsSection = ({ data }: ProjectsSectionProps) => {
                   </ul>
                 ) : null}
               </div>
+              {project.link ? (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-rose-500 transition-colors hover:text-rose-600 dark:text-rose-300 dark:hover:text-rose-200"
+                >
+                  <FaGithub aria-hidden className="h-5 w-5" />
+                  <span>Repositorio</span>
+                </a>
+              ) : null}
             </article>
           ))}
         </div>
