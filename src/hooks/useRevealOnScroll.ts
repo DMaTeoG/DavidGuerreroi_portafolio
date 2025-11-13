@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type RefObject } from "react";
 type RevealOptions = IntersectionObserverInit;
 
 interface RevealHookResult<T extends HTMLElement> {
-  ref: RefObject<T>;
+  ref: RefObject<T | null>;
   isVisible: boolean;
 }
 
