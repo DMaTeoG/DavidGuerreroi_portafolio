@@ -38,13 +38,6 @@ const Navbar = ({
     onChangeLocale(locale);
     closeMenu();
   };
-  const themeLabel = isDarkMode
-    ? currentLocale === "es"
-      ? "Modo claro"
-      : "Light mode"
-    : currentLocale === "es"
-      ? "Modo oscuro"
-      : "Dark mode";
   const themeAriaLabel = isDarkMode
     ? currentLocale === "es"
       ? "Cambiar a modo claro"

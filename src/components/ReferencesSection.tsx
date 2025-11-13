@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import useRevealOnScroll from "@/hooks/useRevealOnScroll";
 import { ReferencesData, ReferenceContactType } from "@/types/portfolio";
 
 type ReferencesSectionProps = {
@@ -13,6 +14,7 @@ const contactIcon: Record<ReferenceContactType, string> = {
 };
 
 const ReferencesSection = ({ data }: ReferencesSectionProps) => {
+  const { ref, isVisible } = useRevealOnScroll<HTMLElement>();
   const getInitials = (name: string) =>
     name
       .split(" ")
@@ -36,21 +38,31 @@ const ReferencesSection = ({ data }: ReferencesSectionProps) => {
 
   return (
     <section
+      ref={ref}
       id="referencias"
-      className="relative overflow-hidden bg-gradient-to-br from-rose-50 via-white to-rose-100 py-24 px-6 transition-colors duration-500 ease-out dark:from-black dark:via-neutral-950 dark:to-rose-950"
+      className={`relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-rose-50 via-white to-rose-100 py-24 px-6 transition-all transition-colors duration-700 ease-out dark:from-black dark:via-neutral-950 dark:to-rose-950 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
     >
       <div className="pointer-events-none absolute left-14 top-10 h-64 w-64 rounded-full bg-rose-200/40 blur-3xl dark:bg-rose-900/40" aria-hidden />
       <div className="pointer-events-none absolute -right-20 bottom-0 h-56 w-56 rounded-full bg-rose-300/30 blur-3xl dark:bg-rose-900/30" aria-hidden />
       <div className="relative mx-auto max-w-6xl">
-        <div className="text-center">
+        <div
+          className={`text-center transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
           <h2 className="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">{data.title}</h2>
           <p className="mt-4 text-base text-gray-600 md:text-lg dark:text-neutral-200">{data.subtitle}</p>
         </div>
         <div className="mt-14 grid gap-8 md:grid-cols-2">
-          {data.items.map((item) => (
+          {data.items.map((item, index) => (
             <article
               key={`${item.name}-${item.role}`}
-              className="relative overflow-hidden rounded-3xl border border-rose-100 bg-white/85 p-8 text-gray-700 shadow-sm transition-transform transition-colors duration-500 hover:-translate-y-1 hover:shadow-lg dark:border-rose-800 dark:bg-black/60 dark:text-neutral-100"
+              className={`relative overflow-hidden rounded-3xl border border-rose-100 bg-white/85 p-8 text-gray-700 shadow-sm transition-all transition-colors duration-700 hover:-translate-y-1 hover:shadow-lg dark:border-rose-800 dark:bg-black/60 dark:text-neutral-100 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+              style={{ transitionDelay: `${Math.min(index, 5) * 120}ms` }}
             >
               <div className="flex items-start gap-4">
                 <div className="relative h-16 w-16 flex-shrink-0">

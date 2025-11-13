@@ -1,4 +1,6 @@
-import type { ReactElement } from "react";
+"use client";
+
+import { useEffect, useMemo, useState, type ReactElement } from "react";
 import Image from "next/image";
 import { HeroData, HeroSocialKey } from "@/types/portfolio";
 
@@ -30,6 +32,58 @@ const iconMap: Record<HeroSocialKey, ReactElement> = {
 };
 
 const HeroSection = ({ data }: HeroSectionProps) => {
+  const [typedTitle, setTypedTitle] = useState("");
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const [isContentVisible, setIsContentVisible] = useState(false);
+  const [isHeroVisible, setIsHeroVisible] = useState(false);
+
+  useEffect(() => {
+    setIsHeroVisible(true);
+  }, []);
+
+  useEffect(() => {
+    const fullTitle = data.title ?? "";
+    setTypedTitle("");
+    setIsTypingComplete(false);
+    setIsContentVisible(false);
+
+    if (fullTitle.length === 0) {
+      setIsTypingComplete(true);
+      setIsContentVisible(true);
+      return;
+    }
+
+    let index = 0;
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    const typeNext = () => {
+      setTypedTitle(fullTitle.slice(0, index + 1));
+      index += 1;
+      if (index < fullTitle.length) {
+        timeoutId = setTimeout(typeNext, 130);
+      } else {
+        setIsTypingComplete(true);
+      }
+    };
+
+    timeoutId = setTimeout(typeNext, 400);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [data.title]);
+
+  useEffect(() => {
+    if (!isTypingComplete) {
+      return;
+    }
+
+    const timer = setTimeout(() => setIsContentVisible(true), 380);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isTypingComplete]);
+
   const highlightName = data.highlightName?.trim();
   const highlightIndex = highlightName ? data.title.indexOf(highlightName) : -1;
   const highlightParts =
@@ -41,89 +95,202 @@ const HeroSection = ({ data }: HeroSectionProps) => {
         }
       : null;
 
-  const socialLinks = (
-    Object.entries(data.social ?? {}) as Array<[HeroSocialKey, string]>
-  ).filter(([, href]) => Boolean(href));
+  const socialLinks = useMemo(
+    () =>
+      (
+        Object.entries(data.social ?? {}) as Array<[HeroSocialKey, string]>
+      ).filter(([, href]) => Boolean(href)),
+    [data.social]
+  );
+
+  const typedTitleContent = useMemo(() => {
+    if (!typedTitle) {
+      return null;
+    }
+
+    if (!highlightName) {
+      return typedTitle;
+    }
+
+    const typedHighlightIndex = typedTitle.indexOf(highlightName);
+    if (typedHighlightIndex === -1) {
+      return typedTitle;
+    }
+
+    return (
+      <>
+        {typedTitle.slice(0, typedHighlightIndex)}
+        <span className="text-rose-500">{highlightName}</span>
+        {typedTitle.slice(typedHighlightIndex + highlightName.length)}
+      </>
+    );
+  }, [highlightName, typedTitle]);
+
+  const showStaticTitle = !typedTitleContent && !!highlightParts;
 
   return (
-    <section
-      id="inicio"
-      className="relative overflow-hidden bg-gradient-to-br from-rose-50 via-white to-rose-100 px-6 py-32 text-gray-900 transition-colors duration-500 ease-out dark:from-black dark:via-neutral-950 dark:to-rose-950"
-    >
-      <div className="pointer-events-none absolute -left-32 top-16 h-80 w-80 rounded-full bg-rose-200/50 blur-3xl dark:bg-rose-900/40" aria-hidden />
-      <div className="pointer-events-none absolute -right-24 -bottom-12 h-72 w-72 rounded-full bg-rose-300/40 blur-3xl dark:bg-rose-900/30" aria-hidden />
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-12 text-center text-gray-900 transition-colors duration-500 ease-out md:flex-row md:items-center md:text-left dark:text-white">
-        <div className="md:flex-1 md:pt-8">
-          <h2 className="text-4xl font-bold leading-tight md:text-5xl">
-            {highlightParts ? (
-              <>
-                {highlightParts.before}
-                <span className="text-rose-500">{highlightParts.highlight}</span>
-                {highlightParts.after}
-              </>
-            ) : (
-              data.title
-            )}
-          </h2>
-          <p className="mt-6 text-base leading-relaxed text-gray-600 md:max-w-xl md:text-lg dark:text-neutral-200">
-            {data.description}
-          </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4 md:justify-start">
-            <a
-              href={data.primaryCta.href}
-              className="rounded-full bg-rose-500 px-6 py-3 text-sm font-semibold text-white shadow transition-transform transition-colors duration-500 hover:-translate-y-0.5 hover:bg-rose-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 dark:bg-rose-600 dark:hover:bg-rose-500"
+    <>
+      <section
+        id="inicio"
+        className="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-rose-50 via-white to-rose-100 px-6 py-32 text-gray-900 transition-colors duration-500 ease-out dark:from-black dark:via-neutral-950 dark:to-rose-950"
+      >
+        <div
+          className="pointer-events-none absolute -left-32 top-16 h-80 w-80 rounded-full bg-rose-200/50 blur-3xl dark:bg-rose-900/40 hero-floating"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute -right-24 -bottom-12 h-72 w-72 rounded-full bg-rose-300/40 blur-3xl dark:bg-rose-900/30 hero-floating hero-floating-delay"
+          aria-hidden
+        />
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-12 text-center text-gray-900 transition-colors duration-500 ease-out md:flex-row md:items-center md:text-left dark:text-white">
+          <div
+            className={`md:flex-1 md:pt-8 transition-all duration-700 ease-out ${
+              isHeroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
+            <h2
+              className="min-h-[3.5rem] text-4xl font-bold leading-tight md:text-5xl"
+              aria-live="polite"
             >
-              {data.primaryCta.label}
-            </a>
-            {data.secondaryCta ? (
+              {typedTitleContent ? (
+                <>
+                  {typedTitleContent}
+                  <span
+                    className={`ml-1 inline-block h-8 w-[3px] align-middle ${
+                      isTypingComplete ? "opacity-0" : "hero-caret bg-rose-500"
+                    }`}
+                    aria-hidden
+                  />
+                </>
+              ) : showStaticTitle && highlightParts ? (
+                <>
+                  {highlightParts.before}
+                  <span className="text-rose-500">{highlightParts.highlight}</span>
+                  {highlightParts.after}
+                </>
+              ) : (
+                data.title
+              )}
+            </h2>
+            <p
+              className={`mt-6 text-base leading-relaxed text-gray-600 md:max-w-xl md:text-lg transition-all duration-500 dark:text-neutral-200 ${
+                isContentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+              }`}
+              style={{ transitionDelay: "120ms" }}
+            >
+              {data.description}
+            </p>
+            <div
+              className={`mt-10 flex flex-wrap items-center justify-center gap-4 md:justify-start transition-all duration-500 ${
+                isContentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "200ms" }}
+            >
               <a
-                href={data.secondaryCta.href}
-                target={data.secondaryCta.targetBlank ? "_blank" : undefined}
-                rel={data.secondaryCta.targetBlank ? "noopener noreferrer" : undefined}
-                className="rounded-full border border-rose-200 bg-white px-6 py-3 text-sm font-semibold text-rose-500 shadow-sm transition-transform transition-colors duration-500 hover:-translate-y-0.5 hover:border-rose-400 hover:text-rose-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-200 dark:border-rose-700 dark:bg-black/60 dark:text-white dark:hover:border-rose-500 dark:hover:text-rose-300"
+                href={data.primaryCta.href}
+                className="rounded-full bg-rose-500 px-6 py-3 text-sm font-semibold text-white shadow transition-transform transition-colors duration-500 hover:-translate-y-0.5 hover:bg-rose-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 dark:bg-rose-600 dark:hover:bg-rose-500"
               >
-                {data.secondaryCta.label}
+                {data.primaryCta.label}
               </a>
+              {data.secondaryCta ? (
+                <a
+                  href={data.secondaryCta.href}
+                  target={data.secondaryCta.targetBlank ? "_blank" : undefined}
+                  rel={data.secondaryCta.targetBlank ? "noopener noreferrer" : undefined}
+                  className="rounded-full border border-rose-200 bg-white px-6 py-3 text-sm font-semibold text-rose-500 shadow-sm transition-transform transition-colors duration-500 hover:-translate-y-0.5 hover:border-rose-400 hover:text-rose-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-200 dark:border-rose-700 dark:bg-black/60 dark:text-white dark:hover:border-rose-500 dark:hover:text-rose-300"
+                >
+                  {data.secondaryCta.label}
+                </a>
+              ) : null}
+            </div>
+            {socialLinks.length > 0 ? (
+              <div
+                className={`mt-10 flex items-center justify-center gap-6 md:justify-start transition-all duration-500 ${
+                  isContentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+                }`}
+                style={{ transitionDelay: "300ms" }}
+              >
+                {socialLinks.map(([key, href]) => (
+                  <a
+                    key={`${key}-${href}`}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 text-gray-900 transition-colors duration-500 hover:border-rose-400 hover:text-rose-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-300 dark:border-rose-700 dark:text-white dark:hover:border-rose-500 dark:hover:text-rose-300"
+                  >
+                    <span className="sr-only">{key}</span>
+                    {iconMap[key]}
+                  </a>
+                ))}
+              </div>
             ) : null}
           </div>
-          {socialLinks.length > 0 ? (
-            <div className="mt-10 flex items-center justify-center gap-6 md:justify-start">
-              {socialLinks.map(([key, href]) => (
-                <a
-                  key={`${key}-${href}`}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 text-gray-900 transition-colors duration-500 hover:border-rose-400 hover:text-rose-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-300 dark:border-rose-700 dark:text-white dark:hover:border-rose-500 dark:hover:text-rose-300"
-                >
-                  <span className="sr-only">{key}</span>
-                  {iconMap[key]}
-                </a>
-              ))}
-            </div>
-          ) : null}
+          <div
+            className={`md:flex md:flex-1 md:justify-center transition-all duration-700 ease-out ${
+              isHeroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+            style={{ transitionDelay: "200ms" }}
+          >
+            {data.image ? (
+              <div className="relative flex justify-center md:justify-center">
+                <span
+                  className="absolute inset-0 rounded-full bg-rose-200/50 blur-2xl dark:bg-rose-900/30"
+                  aria-hidden
+                />
+                <Image
+                  src={data.image.src}
+                  alt={data.image.alt}
+                  width={320}
+                  height={320}
+                  priority
+                  className="relative h-56 w-56 rounded-full border-4 border-white object-cover shadow-xl md:h-64 md:w-64 dark:border-rose-900/60"
+                />
+              </div>
+            ) : (
+              <div className="flex h-56 w-56 items-center justify-center rounded-full border-2 border-dashed border-rose-200 text-sm uppercase tracking-wide text-rose-300 md:h-64 md:w-64 dark:border-neutral-700 dark:text-neutral-500">
+                Foto
+              </div>
+            )}
+          </div>
         </div>
-        <div className="md:flex md:flex-1 md:justify-center">
-          {data.image ? (
-            <div className="relative flex justify-center md:justify-center">
-              <span className="absolute inset-0 rounded-full bg-rose-200/50 blur-2xl dark:bg-rose-900/30" aria-hidden />
-              <Image
-                src={data.image.src}
-                alt={data.image.alt}
-                width={320}
-                height={320}
-                priority
-                className="relative h-56 w-56 rounded-full border-4 border-white object-cover shadow-xl md:h-64 md:w-64 dark:border-rose-900/60"
-              />
-            </div>
-          ) : (
-            <div className="flex h-56 w-56 items-center justify-center rounded-full border-2 border-dashed border-rose-200 text-sm uppercase tracking-wide text-rose-300 md:h-64 md:w-64 dark:border-neutral-700 dark:text-neutral-500">
-              Foto
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
+      </section>
+      <style jsx>{`
+        @keyframes hero-caret-blink {
+          0%,
+          45% {
+            opacity: 1;
+          }
+          55%,
+          100% {
+            opacity: 0;
+          }
+        }
+
+        .hero-caret {
+          animation: hero-caret-blink 1s steps(2, start) infinite;
+        }
+
+        @keyframes hero-float {
+          0% {
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+          50% {
+            transform: translate3d(20px, -10px, 0) scale(1.05);
+          }
+          100% {
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+        }
+
+        .hero-floating {
+          animation: hero-float 16s ease-in-out infinite;
+        }
+
+        .hero-floating-delay {
+          animation-delay: 2s;
+        }
+      `}</style>
+    </>
   );
 };
 
