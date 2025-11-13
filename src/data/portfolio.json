@@ -57,7 +57,7 @@
             "title": "Carta de Cumpleaños Web",
             "description": "Aplicación desarrollada con Next.js que genera una carta de cumpleaños interactiva con efectos visuales, fotos laterales, línea del tiempo y reproductor de audio. Todo el contenido se gestiona desde un único archivo para facilitar la personalización.",
             "preview": {
-              "src": "/globe.svg",
+              "src": "/images/carta.png",
               "alt": "Vista previa del proyecto Carta de Cumpleaños"
             },
             "link": "https://github.com/DMaTeoG/CARTA_LOV.git",
@@ -78,7 +78,7 @@
             "title": "App Movies",
             "description": "Aplicación Flutter que replica una experiencia completa de exploración de películas. Consume la API de TMDB para mostrar estrenos, tendencias, búsqueda y fichas detalladas.",
             "preview": {
-              "src": "/globe.svg",
+              "src": "/images/movies.png",
               "alt": "Vista previa de la aplicación Movies"
             },
             "link": "https://github.com/DMaTeoG/app_movies.git",
