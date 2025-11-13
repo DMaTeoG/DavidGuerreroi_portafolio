@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState, type ReactElement } from "react";
 import Image from "next/image";
 import { HeroData, HeroSocialKey } from "@/types/portfolio";
+import ParallaxBlob from "@/components/ParallaxBlob";
 
 type HeroSectionProps = {
   data: HeroData;
@@ -134,13 +135,13 @@ const HeroSection = ({ data }: HeroSectionProps) => {
         id="inicio"
         className="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-rose-50 via-white to-rose-100 px-6 py-32 text-gray-900 transition-colors duration-500 ease-out dark:from-black dark:via-neutral-950 dark:to-rose-950"
       >
-        <div
-          className="pointer-events-none absolute -left-32 top-16 h-80 w-80 rounded-full bg-rose-200/50 blur-3xl dark:bg-rose-900/40 hero-floating"
-          aria-hidden
+        <ParallaxBlob
+          className="-left-32 top-16 h-80 w-80 rounded-full bg-rose-200/50 dark:bg-rose-900/40 hero-floating"
+          speed={0.18}
         />
-        <div
-          className="pointer-events-none absolute -right-24 -bottom-12 h-72 w-72 rounded-full bg-rose-300/40 blur-3xl dark:bg-rose-900/30 hero-floating hero-floating-delay"
-          aria-hidden
+        <ParallaxBlob
+          className="-right-24 -bottom-12 h-72 w-72 rounded-full bg-rose-300/40 dark:bg-rose-900/30 hero-floating hero-floating-delay"
+          speed={0.12}
         />
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-12 text-center text-gray-900 transition-colors duration-500 ease-out md:flex-row md:items-center md:text-left dark:text-white">
           <div

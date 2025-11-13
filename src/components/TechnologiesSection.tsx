@@ -9,6 +9,7 @@ import {
   SiReact,
 } from "react-icons/si";
 
+import ParallaxBlob from "@/components/ParallaxBlob";
 import useRevealOnScroll from "@/hooks/useRevealOnScroll";
 import { TechnologiesData } from "@/types/portfolio";
 
@@ -45,8 +46,8 @@ const TechnologiesSection = ({ data }: TechnologiesSectionProps) => {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="pointer-events-none absolute -left-24 top-10 h-56 w-56 rounded-full bg-rose-200/40 blur-3xl dark:bg-rose-900/40" aria-hidden />
-      <div className="pointer-events-none absolute -right-16 bottom-0 h-48 w-48 rounded-full bg-rose-300/30 blur-3xl dark:bg-rose-900/30" aria-hidden />
+      <ParallaxBlob className="-left-24 top-10 h-56 w-56 rounded-full bg-rose-200/40 dark:bg-rose-900/40" speed={0.12} />
+      <ParallaxBlob className="-right-16 bottom-0 h-48 w-48 rounded-full bg-rose-300/30 dark:bg-rose-900/30" speed={0.08} />
       <div className="relative mx-auto max-w-5xl text-center">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{data.title}</h2>
         <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">

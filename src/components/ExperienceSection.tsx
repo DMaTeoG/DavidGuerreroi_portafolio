@@ -1,3 +1,4 @@
+import ParallaxBlob from "@/components/ParallaxBlob";
 import useRevealOnScroll from "@/hooks/useRevealOnScroll";
 import { ExperienceData } from "@/types/portfolio";
 
@@ -16,15 +17,15 @@ const ExperienceSection = ({ data }: ExperienceSectionProps) => {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="pointer-events-none absolute -left-24 top-24 h-64 w-64 rounded-full bg-rose-200/40 blur-3xl dark:bg-rose-900/40" aria-hidden />
-      <div className="pointer-events-none absolute -right-16 bottom-10 h-56 w-56 rounded-full bg-rose-300/30 blur-3xl dark:bg-rose-900/30" aria-hidden />
+      <ParallaxBlob className="-left-24 top-24 h-64 w-64 rounded-full bg-rose-200/40 dark:bg-rose-900/40" speed={0.12} />
+      <ParallaxBlob className="-right-16 bottom-10 h-56 w-56 rounded-full bg-rose-300/30 dark:bg-rose-900/30" speed={0.08} />
       <div className="relative mx-auto max-w-4xl">
         <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white">{data.title}</h2>
         <div className="mt-12 space-y-6">
           {data.items.map((experience, index) => (
             <article
               key={experience.role}
-              className={`rounded-3xl border border-rose-100 bg-white/85 p-6 shadow-sm transition-all transition-colors duration-700 hover:-translate-y-1 hover:shadow-lg dark:border-rose-800 dark:bg-black/60 ${
+              className={`rounded-3xl border border-rose-100 bg-white/85 p-6 shadow-sm transition-all transition-colors duration-700 hover:-translate-y-2 hover:scale-[1.01] hover:shadow-2xl dark:border-rose-800 dark:bg-black/60 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
               style={{ transitionDelay: `${Math.min(index, 6) * 90}ms` }}

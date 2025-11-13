@@ -1,5 +1,6 @@
 import type { ChangeEvent, FormEvent } from "react";
 
+import ParallaxBlob from "@/components/ParallaxBlob";
 import useRevealOnScroll from "@/hooks/useRevealOnScroll";
 import { ContactData } from "@/types/portfolio";
 
@@ -21,8 +22,8 @@ const ContactSection = ({ data, formValues, onFieldChange, onSubmit }: ContactSe
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="pointer-events-none absolute left-1/2 top-12 h-64 w-64 -translate-x-1/2 rounded-full bg-rose-200/40 blur-3xl dark:bg-rose-900/40" aria-hidden />
-      <div className="pointer-events-none absolute -bottom-20 right-12 h-56 w-56 rounded-full bg-rose-300/30 blur-3xl dark:bg-rose-900/30" aria-hidden />
+      <ParallaxBlob className="left-1/2 top-12 h-64 w-64 -translate-x-1/2 rounded-full bg-rose-200/40 dark:bg-rose-900/40" speed={0.1} />
+      <ParallaxBlob className="-bottom-20 right-12 h-56 w-56 rounded-full bg-rose-300/30 dark:bg-rose-900/30" speed={0.07} />
       <div className="relative mx-auto max-w-3xl">
         <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white">{data.title}</h2>
         <form
@@ -33,7 +34,7 @@ const ContactSection = ({ data, formValues, onFieldChange, onSubmit }: ContactSe
         >
           {data.fields.map((field, index) => {
             const baseClass =
-              "w-full rounded-2xl border border-rose-100 bg-white/85 px-4 py-4 text-gray-700 shadow-sm transition-all transition-colors duration-500 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200 dark:border-rose-800 dark:bg-black/60 dark:text-white dark:focus:border-rose-500 dark:focus:ring-rose-400";
+              "w-full rounded-2xl border border-rose-100 bg-white/85 px-4 py-4 text-gray-700 shadow-sm transition-all transition-colors duration-500 hover:-translate-y-0.5 hover:shadow-md focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-200 dark:border-rose-800 dark:bg-black/60 dark:text-white dark:hover:border-rose-600/70 dark:hover:shadow-rose-900/40 dark:focus:border-rose-500 dark:focus:ring-rose-400";
             const handleChange = (
               event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
             ) => onFieldChange(field.name, event.target.value);

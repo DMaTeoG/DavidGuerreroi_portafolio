@@ -15,6 +15,7 @@ import ExperienceHighlights from "@/components/ExperienceHighlights";
 import ReferencesSection from "@/components/ReferencesSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 import type { ContactField, PortfolioLocale, PortfolioSiteData } from "@/types/portfolio";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
@@ -45,18 +46,10 @@ export default function Home() {
     if (typeof document === "undefined") {
       return;
     }
-    const nodes: Element[] = [];
-    if (document.documentElement) {
-      nodes.push(document.documentElement);
-    }
-    if (document.body) {
-      nodes.push(document.body);
-    }
-    nodes.forEach((node) => {
-      node.classList.toggle("dark", mode === "dark");
-      node.setAttribute("data-theme", mode);
-    });
-    document.documentElement.style.setProperty("color-scheme", mode);
+    const root = document.documentElement;
+    root.classList.toggle("dark", mode === "dark");
+    root.setAttribute("data-theme", mode);
+    root.style.setProperty("color-scheme", mode);
   }, []);
 
   useEffect(() => {
@@ -176,6 +169,7 @@ export default function Home() {
         onSubmit={handleSubmit}
       />
       <Footer data={data.footer} />
+      <ScrollToTopButton />
     </main>
   );
 }

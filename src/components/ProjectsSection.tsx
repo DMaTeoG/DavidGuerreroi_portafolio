@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import ParallaxBlob from "@/components/ParallaxBlob";
 import useRevealOnScroll from "@/hooks/useRevealOnScroll";
 import { ProjectsData } from "@/types/portfolio";
 
@@ -19,15 +20,15 @@ const ProjectsSection = ({ data }: ProjectsSectionProps) => {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="pointer-events-none absolute left-1/2 top-0 h-60 w-60 -translate-x-1/2 rounded-full bg-rose-200/40 blur-3xl dark:bg-rose-900/40" aria-hidden />
-      <div className="pointer-events-none absolute -bottom-24 left-10 h-52 w-52 rounded-full bg-rose-300/30 blur-3xl dark:bg-rose-900/30" aria-hidden />
+      <ParallaxBlob className="left-1/2 top-0 h-60 w-60 -translate-x-1/2 rounded-full bg-rose-200/40 dark:bg-rose-900/40" speed={0.12} />
+      <ParallaxBlob className="-bottom-24 left-10 h-52 w-52 rounded-full bg-rose-300/30 dark:bg-rose-900/30" speed={0.09} />
       <div className="relative mx-auto max-w-6xl">
         <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white">{data.title}</h2>
         <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
           {data.items.map((project, index) => (
             <article
               key={project.title}
-              className={`flex h-full flex-col rounded-3xl border border-rose-100 bg-white/85 p-6 shadow-sm transition-all transition-colors duration-700 hover:-translate-y-1 hover:shadow-lg dark:border-rose-800 dark:bg-black/60 ${
+              className={`flex h-full flex-col rounded-3xl border border-rose-100 bg-white/85 p-6 shadow-sm transition-all transition-colors duration-700 hover:-translate-y-2 hover:scale-[1.01] hover:shadow-2xl dark:border-rose-800 dark:bg-black/60 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
               style={{ transitionDelay: `${Math.min(index, 5) * 90}ms` }}

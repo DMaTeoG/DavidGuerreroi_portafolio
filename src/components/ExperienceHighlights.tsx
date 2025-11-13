@@ -1,3 +1,4 @@
+import ParallaxBlob from "@/components/ParallaxBlob";
 import useRevealOnScroll from "@/hooks/useRevealOnScroll";
 import { ExperienceHighlightsData } from "@/types/portfolio";
 
@@ -16,8 +17,8 @@ const ExperienceHighlights = ({ data }: ExperienceHighlightsProps) => {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="pointer-events-none absolute left-12 top-8 h-64 w-64 rounded-full bg-rose-200/40 blur-3xl dark:bg-rose-900/40" aria-hidden />
-      <div className="pointer-events-none absolute -right-20 bottom-0 h-56 w-56 rounded-full bg-rose-300/30 blur-3xl dark:bg-rose-900/30" aria-hidden />
+      <ParallaxBlob className="left-12 top-8 h-64 w-64 rounded-full bg-rose-200/40 dark:bg-rose-900/40" speed={0.11} />
+      <ParallaxBlob className="-right-20 bottom-0 h-56 w-56 rounded-full bg-rose-300/30 dark:bg-rose-900/30" speed={0.08} />
       <div className="relative mx-auto max-w-6xl space-y-12">
         <div
           className={`text-center transition-all duration-700 ${
@@ -33,7 +34,7 @@ const ExperienceHighlights = ({ data }: ExperienceHighlightsProps) => {
           {data.items.map((item, index) => (
             <article
               key={`${item.company}-${item.role}`}
-              className={`rounded-3xl border border-rose-100 bg-white/85 p-8 shadow-sm transition-all transition-colors duration-700 hover:-translate-y-1 hover:shadow-lg dark:border-rose-800 dark:bg-black/60 ${
+              className={`rounded-3xl border border-rose-100 bg-white/85 p-8 shadow-sm transition-all transition-colors duration-700 hover:-translate-y-2 hover:scale-[1.01] hover:shadow-2xl dark:border-rose-800 dark:bg-black/60 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
               style={{ transitionDelay: `${Math.min(index, 5) * 110}ms` }}

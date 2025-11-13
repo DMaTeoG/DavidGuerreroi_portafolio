@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import ParallaxBlob from "@/components/ParallaxBlob";
 import useRevealOnScroll from "@/hooks/useRevealOnScroll";
 import { AboutData } from "@/types/portfolio";
 
@@ -18,8 +19,8 @@ const AboutSection = ({ data }: AboutSectionProps) => {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="pointer-events-none absolute -top-20 left-16 h-64 w-64 rounded-full bg-rose-200/40 blur-3xl dark:bg-rose-900/40" aria-hidden />
-      <div className="pointer-events-none absolute -bottom-24 right-10 h-52 w-52 rounded-full bg-rose-300/30 blur-3xl dark:bg-rose-900/30" aria-hidden />
+      <ParallaxBlob className="-top-20 left-16 h-64 w-64 rounded-full bg-rose-200/40 dark:bg-rose-900/40" speed={0.12} />
+      <ParallaxBlob className="-bottom-24 right-10 h-52 w-52 rounded-full bg-rose-300/30 dark:bg-rose-900/30" speed={0.08} />
       <div className="relative mx-auto grid max-w-5xl gap-12 text-gray-800 transition-colors duration-500 ease-out dark:text-white md:grid-cols-[3fr_2fr] md:items-center">
         <div
           className={`space-y-6 text-center md:text-left transition-all duration-700 ${
