@@ -78,6 +78,7 @@ export interface ExperienceHighlightItem {
 
 export interface ExperienceHighlightsData {
   title: string;
+  subtitle?: string;
   items: ExperienceHighlightItem[];
 }
 

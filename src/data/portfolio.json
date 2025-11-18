@@ -1,18 +1,42 @@
 {
   "defaultLocale": "es",
-  "locales": ["es", "en"],
+  "locales": [
+    "es",
+    "en"
+  ],
   "content": {
     "es": {
       "navbar": {
         "name": "Mateo Guerrero",
         "links": [
-          { "label": "Inicio", "href": "#inicio" },
-          { "label": "Sobre mí", "href": "#sobre" },
-          { "label": "Tecnologías", "href": "#tecnologias" },
-          { "label": "Proyectos", "href": "#proyectos" },
-          { "label": "Experiencias", "href": "#experiencias-destacadas" },
-          { "label": "Testimonios", "href": "#referencias" },
-          { "label": "Contacto", "href": "#contacto" }
+          {
+            "label": "Inicio",
+            "href": "#home"
+          },
+          {
+            "label": "Sobre mí",
+            "href": "#about"
+          },
+          {
+            "label": "Tecnologías",
+            "href": "#technologies"
+          },
+          {
+            "label": "Proyectos",
+            "href": "#projects"
+          },
+          {
+            "label": "Experiencias",
+            "href": "#experience-highlights"
+          },
+          {
+            "label": "Testimonios",
+            "href": "#testimonials"
+          },
+          {
+            "label": "Contacto",
+            "href": "#contact"
+          }
         ]
       },
       "hero": {
@@ -24,11 +48,11 @@
         },
         "primaryCta": {
           "label": "Contáctame",
-          "href": "#contacto"
+          "href": "#contact"
         },
         "secondaryCta": {
           "label": "Ver CV",
-          "href": "/cv.pdf",
+          "href": "https://drive.google.com/file/d/1-q2BvRNAglZnUddfe_ww8-kmzZwns6yh/view?usp=sharing",
           "targetBlank": true
         },
         "social": {
@@ -48,7 +72,17 @@
       },
       "technologies": {
         "title": "Tecnologías",
-        "items": ["HTML", "CSS", "JavaScript", "React", "Next.js", "Node.js", "Python", "Django", "TypeScript"]
+        "items": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "React",
+          "Next.js",
+          "Node.js",
+          "Python",
+          "Django",
+          "TypeScript"
+        ]
       },
       "projects": {
         "title": "Proyectos",
@@ -62,17 +96,27 @@
             },
             "link": "https://github.com/DMaTeoG/CARTA_LOV.git",
             "demo": "https://carta-lov.vercel.app/",
-            "technologies": ["Next.js", "React", "TypeScript"]
+            "technologies": [
+              "Next.js",
+              "React",
+              "TypeScript"
+            ]
           },
           {
             "title": "Gestión de Hospital",
             "description": "Sistema para administrar citas médicas, historiales clínicos y roles (administrador, paciente, usuario). Desarrollado con Django en el backend y Next.js + TypeScript en el frontend.",
             "preview": {
-              "src": "/globe.svg",
+              "src": "/images/hospital.png",
               "alt": "Panel del sistema de gestión hospitalaria"
             },
-            "link": null,
-            "technologies": ["Django", "Next.js", "TypeScript", "PostgreSQL"]
+            "link": "https://github.com/DMaTeoG/back_hospital.git",
+            "demo": "https://front-hospital-five.vercel.app/login",
+            "technologies": [
+              "Django",
+              "Next.js",
+              "TypeScript",
+              "PostgreSQL"
+            ]
           },
           {
             "title": "App Movies",
@@ -82,7 +126,11 @@
               "alt": "Vista previa de la aplicación Movies"
             },
             "link": "https://github.com/DMaTeoG/app_movies.git",
-            "technologies": ["Flutter", "Dart", "TMDB API"]
+            "technologies": [
+              "Flutter",
+              "Dart",
+              "TMDB API"
+            ]
           }
         ]
       },
@@ -118,7 +166,8 @@
               "Integración completa entre frontend y backend en aplicaciones reales"
             ]
           }
-        ]
+        ],
+        "subtitle": "Proyectos y logros clave que reflejan mi impacto en equipos multidisciplinarios."
       },
       "references": {
         "title": "Testimonios",
@@ -153,18 +202,36 @@
       "contact": {
         "title": "Contacto",
         "fields": [
-          { "name": "nombre", "type": "text", "placeholder": "Nombre" },
-          { "name": "correo", "type": "email", "placeholder": "Correo" },
-          { "name": "mensaje", "type": "textarea", "placeholder": "Mensaje" }
+          {
+            "name": "nombre",
+            "type": "text",
+            "placeholder": "Nombre"
+          },
+          {
+            "name": "correo",
+            "type": "email",
+            "placeholder": "Correo"
+          },
+          {
+            "name": "mensaje",
+            "type": "textarea",
+            "placeholder": "Mensaje"
+          }
         ],
         "buttonLabel": "Enviar Mensaje",
-        "email": "mateoguerrero.dev@gmail.com"
+        "email": "mateoguerrero@campusucc.edu.co"
       },
       "footer": {
         "text": "© 2025 Mateo Guerrero. Todos los derechos reservados.",
         "links": [
-          { "label": "LinkedIn", "href": "https://www.linkedin.com/in/mateo-guerrero-570b53398" },
-          { "label": "GitHub", "href": "https://github.com/DMaTeoG" }
+          {
+            "label": "LinkedIn",
+            "href": "https://www.linkedin.com/in/mateo-guerrero-570b53398"
+          },
+          {
+            "label": "GitHub",
+            "href": "https://github.com/DMaTeoG"
+          }
         ]
       }
     },
@@ -172,13 +239,34 @@
       "navbar": {
         "name": "Mateo Guerrero",
         "links": [
-          { "label": "Home", "href": "#inicio" },
-          { "label": "About me", "href": "#sobre" },
-          { "label": "Technologies", "href": "#tecnologias" },
-          { "label": "Projects", "href": "#proyectos" },
-          { "label": "Highlights", "href": "#experiencias-destacadas" },
-          { "label": "Testimonials", "href": "#referencias" },
-          { "label": "Contact", "href": "#contacto" }
+          {
+            "label": "Home",
+            "href": "#home"
+          },
+          {
+            "label": "About me",
+            "href": "#about"
+          },
+          {
+            "label": "Technologies",
+            "href": "#technologies"
+          },
+          {
+            "label": "Projects",
+            "href": "#projects"
+          },
+          {
+            "label": "Highlights",
+            "href": "#experience-highlights"
+          },
+          {
+            "label": "Testimonials",
+            "href": "#testimonials"
+          },
+          {
+            "label": "Contact",
+            "href": "#contact"
+          }
         ]
       },
       "hero": {
@@ -190,11 +278,11 @@
         },
         "primaryCta": {
           "label": "Contact me",
-          "href": "#contacto"
+          "href": "#contact"
         },
         "secondaryCta": {
           "label": "View CV",
-          "href": "/cv.pdf",
+          "href": "https://drive.google.com/file/d/1-q2BvRNAglZnUddfe_ww8-kmzZwns6yh/view?usp=sharing",
           "targetBlank": true
         },
         "social": {
@@ -214,7 +302,17 @@
       },
       "technologies": {
         "title": "Technologies",
-        "items": ["HTML", "CSS", "JavaScript", "React", "Next.js", "Node.js", "Python", "Django", "TypeScript"]
+        "items": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "React",
+          "Next.js",
+          "Node.js",
+          "Python",
+          "Django",
+          "TypeScript"
+        ]
       },
       "projects": {
         "title": "Projects",
@@ -223,32 +321,46 @@
             "title": "Birthday Card Web",
             "description": "Interactive birthday card built with Next.js. Includes visual effects, side photos, timeline and audio player. All content is controlled from a single file for quick customization.",
             "preview": {
-              "src": "/globe.svg",
+              "src": "/images/birthday-card.png",
               "alt": "Birthday card preview"
             },
             "link": "https://github.com/DMaTeoG/CARTA_LOV.git",
             "demo": "https://carta-lov.vercel.app/",
-            "technologies": ["Next.js", "React", "TypeScript"]
+            "technologies": [
+              "Next.js",
+              "React",
+              "TypeScript"
+            ]
           },
           {
             "title": "Hospital Management System",
             "description": "System to manage appointments, clinical records and user roles. Built with Django for the backend and Next.js + TypeScript for the frontend.",
             "preview": {
-              "src": "/globe.svg",
-              "alt": "Hospital system panel preview"
+              "src": "/images/hospital-management.png",
+              "alt": "Hospital management system panel preview"
             },
-            "link": null,
-            "technologies": ["Django", "Next.js", "TypeScript", "PostgreSQL"]
+            "link": "https://github.com/DMaTeoG/back_hospital.git",
+            "demo": "https://front-hospital-five.vercel.app/login",
+            "technologies": [
+              "Django",
+              "Next.js",
+              "TypeScript",
+              "PostgreSQL"
+            ]
           },
           {
             "title": "Movies App",
             "description": "Flutter application that replicates an immersive movie-browsing experience. Uses the TMDB API to display trending films, search results and detailed information.",
             "preview": {
-              "src": "/globe.svg",
+              "src": "/images/movies-app.png",
               "alt": "Movies app preview"
             },
             "link": "https://github.com/DMaTeoG/app_movies.git",
-            "technologies": ["Flutter", "Dart", "TMDB API"]
+            "technologies": [
+              "Flutter",
+              "Dart",
+              "TMDB API"
+            ]
           }
         ]
       },
@@ -284,7 +396,8 @@
               "Implemented full integration between frontend and backend"
             ]
           }
-        ]
+        ],
+        "subtitle": "Key projects and achievements that highlight my impact on multidisciplinary teams."
       },
       "references": {
         "title": "Testimonials",
@@ -319,18 +432,36 @@
       "contact": {
         "title": "Contact",
         "fields": [
-          { "name": "name", "type": "text", "placeholder": "Name" },
-          { "name": "email", "type": "email", "placeholder": "Email" },
-          { "name": "message", "type": "textarea", "placeholder": "Message" }
+          {
+            "name": "name",
+            "type": "text",
+            "placeholder": "Name"
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "placeholder": "Email"
+          },
+          {
+            "name": "message",
+            "type": "textarea",
+            "placeholder": "Message"
+          }
         ],
         "buttonLabel": "Send Message",
-        "email": "mateoguerrero.dev@gmail.com"
+        "email": "mateoguerrero@campusucc.edu.co"
       },
       "footer": {
         "text": "© 2025 Mateo Guerrero. All rights reserved.",
         "links": [
-          { "label": "LinkedIn", "href": "https://www.linkedin.com/in/mateo-guerrero-570b53398" },
-          { "label": "GitHub", "href": "https://github.com/DMaTeoG" }
+          {
+            "label": "LinkedIn",
+            "href": "https://www.linkedin.com/in/mateo-guerrero-570b53398"
+          },
+          {
+            "label": "GitHub",
+            "href": "https://github.com/DMaTeoG"
+          }
         ]
       }
     }

@@ -12,7 +12,7 @@ const ExperienceSection = ({ data }: ExperienceSectionProps) => {
   return (
     <section
       ref={ref}
-      id="experiencia"
+      id="experience"
       className={`relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-rose-50 via-white to-rose-100 py-24 px-6 transition-all transition-colors duration-700 ease-out dark:from-black dark:via-neutral-950 dark:to-rose-950 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}

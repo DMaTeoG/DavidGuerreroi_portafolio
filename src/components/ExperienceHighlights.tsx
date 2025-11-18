@@ -12,7 +12,7 @@ const ExperienceHighlights = ({ data }: ExperienceHighlightsProps) => {
   return (
     <section
       ref={ref}
-      id="experiencias-destacadas"
+      id="experience-highlights"
       className={`relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-rose-50 via-white to-rose-100 py-24 px-6 transition-all transition-colors duration-700 ease-out dark:from-black dark:via-neutral-950 dark:to-rose-950 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
@@ -26,9 +26,9 @@ const ExperienceHighlights = ({ data }: ExperienceHighlightsProps) => {
           }`}
         >
           <h2 className="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">{data.title}</h2>
-          <p className="mt-3 text-base text-gray-600 dark:text-neutral-200">
-            Proyectos y logros clave que reflejan mi impacto en equipos multidisciplinarios.
-          </p>
+          {data.subtitle ? (
+            <p className="mt-3 text-base text-gray-600 dark:text-neutral-200">{data.subtitle}</p>
+          ) : null}
         </div>
         <div className="grid gap-8 md:grid-cols-2">
           {data.items.map((item, index) => (

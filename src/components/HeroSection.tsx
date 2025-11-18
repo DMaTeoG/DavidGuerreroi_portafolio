@@ -131,8 +131,8 @@ const HeroSection = ({ data }: HeroSectionProps) => {
 
   return (
     <>
-      <section
-        id="inicio"
+          <section
+            id="home"
         className="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-rose-50 via-white to-rose-100 px-6 py-32 text-gray-900 transition-colors duration-500 ease-out dark:from-black dark:via-neutral-950 dark:to-rose-950"
       >
         <ParallaxBlob
