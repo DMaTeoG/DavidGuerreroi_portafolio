@@ -79,12 +79,12 @@ const Navbar = ({
       ref={navRef}
       className="fixed top-0 left-0 z-50 w-full border-b border-rose-100/70 bg-white/80 backdrop-blur shadow-sm transition-colors duration-500 ease-out dark:border-rose-900/60 dark:bg-black/80"
     >
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4 text-gray-900 transition-colors duration-500 dark:text-white">
+      <div className="mx-auto flex max-w-6xl flex-nowrap items-center justify-between gap-4 px-6 py-4 text-gray-900 transition-colors duration-500 dark:text-white">
         <h1 className="text-xl font-semibold tracking-tight text-gray-900 transition-colors dark:text-neutral-100">
           {data.name}
         </h1>
-        <div className="flex flex-1 flex-wrap items-center justify-end gap-3 md:min-w-0 md:gap-4 lg:gap-6">
-          <ul className="hidden flex flex-wrap items-center justify-end gap-x-6 gap-y-2 text-sm font-semibold text-gray-700 transition-colors md:flex md:flex-1 md:min-w-0 dark:text-neutral-200">
+        <div className="flex flex-1 flex-nowrap items-center justify-end gap-3 overflow-x-auto md:min-w-0 md:gap-4 lg:gap-6">
+          <ul className="hidden flex flex-nowrap items-center justify-end gap-x-6 text-sm font-semibold text-gray-700 transition-colors md:flex md:flex-1 md:min-w-0 dark:text-neutral-200">
             {data.links.map((link) => (
               <li key={link.href}>
                 <a
@@ -103,6 +103,26 @@ const Navbar = ({
               return (
                 <button
                   key={locale}
+                  type="button"
+                  onClick={() => handleLocaleClick(locale)}
+                  className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide transition-colors ${
+                    isActive
+                      ? "border-rose-500 bg-rose-500 text-white shadow"
+                      : "border-rose-200/80 bg-white text-gray-800 hover:border-rose-400 hover:text-rose-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-200 dark:hover:border-neutral-500"
+                  }`}
+                  aria-pressed={isActive}
+                >
+                  {localeLabel[locale]}
+                </button>
+              );
+            })}
+          </div>
+          <div className="flex items-center gap-2 md:hidden">
+            {availableLocales.map((locale) => {
+              const isActive = locale === currentLocale;
+              return (
+                <button
+                  key={`xs-locale-${locale}`}
                   type="button"
                   onClick={() => handleLocaleClick(locale)}
                   className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide transition-colors ${

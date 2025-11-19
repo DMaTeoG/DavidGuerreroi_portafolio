@@ -13,6 +13,7 @@ import TechnologiesSection from "@/components/TechnologiesSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ExperienceHighlights from "@/components/ExperienceHighlights";
 import ReferencesSection from "@/components/ReferencesSection";
+import FaqSection from "@/components/FaqSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
@@ -183,6 +184,7 @@ export default function Home() {
       <ProjectsSection data={data.projects} />
       <ExperienceHighlights data={data.experienceHighlights} />
       <ReferencesSection data={data.references} />
+      {data.faq ? <FaqSection data={data.faq} /> : null}
       <ContactSection
         data={data.contact}
         formValues={form}

@@ -106,6 +106,17 @@ export interface ReferencesData {
   items: ReferenceItem[];
 }
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface FaqData {
+  title: string;
+  subtitle?: string;
+  items: FaqItem[];
+}
+
 export interface ContactField {
   name: string;
   type: "text" | "email" | "textarea";
@@ -138,6 +149,7 @@ export interface PortfolioData {
   experience: ExperienceData;
   experienceHighlights: ExperienceHighlightsData;
   references: ReferencesData;
+  faq?: FaqData;
   contact: ContactData;
   footer: FooterData;
 }

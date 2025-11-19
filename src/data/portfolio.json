@@ -36,6 +36,10 @@
           {
             "label": "Contacto",
             "href": "#contact"
+          },
+          {
+            "label": "Preguntas frecuentes",
+            "href": "#faq"
           }
         ]
       },
@@ -233,6 +237,28 @@
             "href": "https://github.com/DMaTeoG"
           }
         ]
+      },
+      "faq": {
+        "title": "Preguntas frecuentes",
+        "subtitle": "Resuelvo dudas comunes sobre disponibilidad y forma de trabajo.",
+        "items": [
+          {
+            "question": "¿Estás disponible para relocalización o remoto?",
+            "answer": "Sí, puedo trabajar 100% remoto y evaluar relocalización si el proyecto lo requiere."
+          },
+          {
+            "question": "¿Qué tipo de proyectos disfrutas más?",
+            "answer": "Me entusiasman las aplicaciones web con retos de escalabilidad, integraciones complejas y enfoques centrados en la experiencia del usuario."
+          },
+          {
+            "question": "¿Cuál es tu disponibilidad actual?",
+            "answer": "Estoy disponible para iniciar nuevos proyectos de inmediato, con dedicación de tiempo completo."
+          },
+          {
+            "question": "¿Cómo prefieres colaborar con los equipos?",
+            "answer": "Trabajo cómodo en squads ágiles, con comunicación transparente y revisiones frecuentes para iterar más rápido."
+          }
+        ]
       }
     },
     "en": {
@@ -266,6 +292,10 @@
           {
             "label": "Contact",
             "href": "#contact"
+          },
+          {
+            "label": "FAQ",
+            "href": "#faq"
           }
         ]
       },
@@ -461,6 +491,28 @@
           {
             "label": "GitHub",
             "href": "https://github.com/DMaTeoG"
+          }
+        ]
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Quick answers about my availability and collaboration style.",
+        "items": [
+          {
+            "question": "Are you open to relocation or remote work?",
+            "answer": "I can work fully remote and I am open to discussing relocation when the project demands it."
+          },
+          {
+            "question": "What kind of projects do you enjoy the most?",
+            "answer": "I thrive on web applications that require scalability, complex integrations and a strong UX focus."
+          },
+          {
+            "question": "What is your current availability?",
+            "answer": "I am ready to start new projects right away with full-time dedication."
+          },
+          {
+            "question": "How do you prefer to collaborate with teams?",
+            "answer": "I like working with agile squads, keeping communication transparent and iterating through frequent reviews."
           }
         ]
       }
